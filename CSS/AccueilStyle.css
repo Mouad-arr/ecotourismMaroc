@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(160, 193, 236);
+    line-height: 1.6;
+}
+header{
+    top:0;
+}
+main{
+    background-image: url('images/nature1.jpg');
+    width: 100vw;
+}
+.slider{
+   position: relative;
+   width: 100vw;
+   height: 100vh;
+   overflow: hidden;
+}
+.slide{
+    display: flex;
+    height: 100%;
+    width: 400vw;
+    animation: slide 21s linear infinite;
+}
+.slide img{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+@keyframes slide {
+    0% { transform: translateX(0); }
+    22.22% { transform: translateX(0); }
+
+    33.33% { transform: translateX(-100vw); }
+    55.55% { transform: translateX(-100vw); }
+
+    66.66% { transform: translateX(-200vw); }
+    88.88% { transform: translateX(-200vw); }
+    
+    100% { transform: translateX(-300vw); }
+}
+.caption{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    text-align : center;
+}
+.caption h2{
+     font-size: 30px;
+     color: blanchedalmond;
+}
+.caption p{
+    font-size: 13px;
+    color: rgb(5, 14, 32);
+    line-height: 1.6;
+}
+.slider button{
+    position: absolute;
+    top:63%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 10px 20px;
+    color: white;
+    background: linear-gradient(to bottom,rgb(32, 44, 46),gray);
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+}
+.slider button:hover{
+    font-size: 16px;
+    background : linear-gradient(to bottom,gray,rgb(32, 44, 46));;
+}
