@@ -4,27 +4,35 @@
       <title>Présentation du concept — ÉcoTourisme Maroc</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <link rel="stylesheet" href="CSS/base.css" type="text/css">
       <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
       <link rel="stylesheet" href="CSS/AproposStyle.css" type="text/css">
     </head>
-    <body>
-      <header>
-         <div class="title">
-            <h1 align="center">ÉcoTourisme Maroc</h1>
-            <p align="center">Explorer, Respecter, Préserver</p>
-         </div>
-         <nav  align="center">
-            <a href="accueil.html">Accueil</a>&nbsp;
-            <a href="destinations.html">Destinations écologiques</a>&nbsp;
-            <a href="Activite.html">Activités</a>&nbsp;
-            <a href="consielsBlog.html">Conseils & Blog </a>&nbsp;
-            <a href="apropos.html">A propos</a>&nbsp;
-            <a href="contact.html">Contact</a>
-         </nav>
-      </header>
-     <main>
+   <body class="has-bottom-panel">
+         <header>
+            <div class="header-inner container">
+                      <div class="title">
+                  <h1>ÉcoTourisme Maroc</h1>
+                  <p>Explorer • Respecter • Préserver</p>
+               </div>
+                      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                      </button>
+               <nav class="main-nav">
+                  <a href="accueil.html">Accueil</a>
+                  <a href="destinations.html">Destinations</a>
+                  <a href="Activite.html">Activités</a>
+                  <a href="consielsBlog.html">Blog</a>
+                  <a href="apropos.html" class="active">À propos</a>
+                  <a href="contact.html">Contact</a>
+               </nav>
+            </div>
+         </header>
+     <main class="page-bottom-panel container" aria-labelledby="apropos-title">
       <section>
-         <h1 class="titre">Présentation du concept — Qu'est-ce que l'écotourisme ?</h1>
+         <h1 id="apropos-title" class="titre">Présentation du concept — Qu'est-ce que l'écotourisme ?</h1>
          <div class="parag">
             <h3>Définition simple et claire </h3>
             <p>L'écotourisme est une forme de voyage responsable qui vise à découvrir la nature tout en la respectant, à soutenir les communautés locales et à préserver les écosystèmes.</p>
@@ -54,12 +62,14 @@
       </section>
       <hr>
       <p id="line">Découvrez nos <a href="destinations.html">destinations écologiques</a> pour en savoir plus.</p>
-      </main>
-      <footer>
-         <div class="footer-container">
-            <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
-            <a href="contact.html">Contact</a>
-         </div>
-      </footer>
+     </main>
+     <!-- fixed footer for this page, the main panel sits above it -->
+     <footer class="fixed-footer">
+        <div class="footer-container container">
+          <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
+          <nav><a href="contact.html">Contact</a></nav>
+        </div>
+     </footer>
+          <script src="scripts/main.js" defer></script>
     </body>
 </html>

@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
-   <head>
-      <title>ÉcoTourisme Maroc</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1.0">
-      <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
-      <link rel="stylesheet" href="CSS/AccueilStyle.css" type="text/css">
-   </head>
-    <body>
-       <header>
-         <div class="title">
-            <h1 align="center">ÉcoTourisme Maroc</h1>
-            <p align="center">Explorer, Respecter, Préserver</p>
-         </div>
-         <nav  align="center">
-            <a href="accueil.html">Accueil</a>&nbsp;
-            <a href="destinations.html">Destinations écologiques</a>&nbsp;
-            <a href="Activite.html">Activités</a>&nbsp;
-            <a href="consielsBlog.html">Conseils & Blog </a>&nbsp;
-            <a href="apropos.html">A propos</a>&nbsp;
-            <a href="contact.html">Contact</a>
-         </nav>
-       </header>
-     <main>
-         <section class="slider">
+<head>
+    <title>ÉcoTourisme Maroc</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/base.css" type="text/css">
+    <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
+    <link rel="stylesheet" href="CSS/AccueilStyle.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div class="header-inner container">
+            <div class="title">
+                <h1>ÉcoTourisme Maroc</h1>
+                <p>Explorer • Respecter • Préserver</p>
+            </div>
+            <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="main-nav">
+                <a href="accueil.html" class="active">Accueil</a>
+                <a href="destinations.html">Destinations</a>
+                <a href="Activite.html">Activités</a>
+                <a href="consielsBlog.html">Blog</a>
+                <a href="apropos.html">À propos</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="slider hero">
             <div class="slide">
-               <img src="images/nature1.jpg" alt="Paysage écologique du Maroc" >
-               <img src="images/nature7.jpg" alt="Paysage écologique du Maroc" >
-               <img src="images/nature6.jpg" alt="Paysage écologique du Maroc" >
+                <img src="images/nature1.jpg" alt="Paysage écologique du Maroc">
+                <img src="images/nature7.jpg" alt="Paysage écologique du Maroc">
+                <img src="images/nature6.jpg" alt="Paysage écologique du Maroc">
             </div>
-            <div class="caption">
-               <h2>Explorez le Maroc autrement — entre nature, culture et respect.</h2>
-               <p>Découvrez un Maroc authentique où nature, culture et traditions se rencontrent.<br> Partez à la découverte de paysages uniques et d'expériences locales pensées dans le respect de l'environnement et des communautés.</p>
+
+            <div class="caption card">
+                <h2>Explorez le Maroc autrement — entre nature, culture et respect.</h2>
+                <p>
+                    Découvrez un Maroc authentique où nature, traditions et cultures se rencontrent.<br>
+                    Partez à l’aventure à travers des paysages uniques et des expériences locales conçues
+                    dans le respect de l’environnement et des communautés.
+                </p>
             </div>
-           <button onclick="destinations.html">Découvrir nos destinations</button>
-         </section>
-     </main>
-     <footer align="center">
-         <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
-      </footer>
-    </body>
+
+            <a class="btn accent pulse" href="destinations.html">Découvrir nos destinations</a>
+        </section>
+        <!-- breathing space before footer -->
+        <div class="site-bottom-gap" aria-hidden="true"></div>
+    </main>
+
+    <footer>
+        <div class="footer-container container">
+            <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
+            <div><a href="contact.html">Contact</a></div>
+        </div>
+    </footer>
+    <script src="scripts/main.js" defer></script>
+</body>
 </html>

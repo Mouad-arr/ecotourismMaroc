@@ -3,28 +3,59 @@
    <head>
        <title>ÉcoTourisme Maroc</title>
        <meta charset="utf-8">
-       <meta name="viewport" content="width=device-width,initial-scale=1.0">
-       <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <link rel="stylesheet" href="CSS/base.css" type="text/css">
+      <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
    </head>
    <body>
-      <header>
-      <div class="title">
-         <h1 align="center">ÉcoTourisme Maroc</h1>
-         <p align="center">Explorer, Respecter, Préserver</p>
-      </div>
-      <nav  align="center">
-         <a href="accueil.html">Accueil</a>&nbsp;
-         <a href="destinations.html">Destinations écologiques</a>&nbsp;
-         <a href="Activite.html">Activités</a>&nbsp;
-         <a href="consielsBlog.html">Conseils & Blog </a>&nbsp;
-         <a href="apropos.html">A propos</a>&nbsp;
-         <a href="contact.html">Contact</a>
-      </nav>
-      </header>
-      <main>
-      </main>
-      <footer align="center">
-         <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
-      </footer>
+         <header>
+            <div class="header-inner container">
+                      <div class="title">
+                  <h1>ÉcoTourisme Maroc</h1>
+                  <p>Explorer • Respecter • Préserver</p>
+               </div>
+                      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                      </button>
+               <nav class="main-nav">
+                  <a href="accueil.html">Accueil</a>
+                  <a href="destinations.html">Destinations</a>
+                  <a href="Activite.html">Activités</a>
+                  <a href="consielsBlog.html" class="active">Blog</a>
+                  <a href="apropos.html">À propos</a>
+                  <a href="contact.html">Contact</a>
+               </nav>
+            </div>
+         </header>
+         <main class="container">
+            <h1 class="page-title">Conseils & Blog — Voyager responsable</h1>
+            <div class="row mt-18">
+               <article class="card col">
+                  <h3>5 gestes pour réduire son impact</h3>
+                  <p class="muted">Comment minimiser son empreinte lors d'un séjour — conseils pratiques pour chaque visiteur.</p>
+                  <a class="btn secondary" href="#">Lire</a>
+               </article>
+               <article class="card col">
+                  <h3>Itinéraires hors piste</h3>
+                  <p class="muted">Circuit pour découvrir des coins authentiques, en respectant les communautés locales.</p>
+                  <a class="btn secondary" href="#">Lire</a>
+               </article>
+               <article class="card col">
+                  <h3>Soutenir les projets locaux</h3>
+                  <p class="muted">Rencontrer et soutenir initiatives écologiques qui font bouger les choses.</p>
+                  <a class="btn secondary" href="#">Lire</a>
+               </article>
+            </div>
+         </main>
+            <div class="site-bottom-gap" aria-hidden="true"></div>
+         <footer>
+            <div class="footer-container container">
+               <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
+               <div><a href="contact.html">Contact</a></div>
+            </div>
+             </footer>
+          <script src="scripts/main.js" defer></script>
    </body>
 </html>
