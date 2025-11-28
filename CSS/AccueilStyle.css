@@ -1,78 +1,67 @@
-*{
+/* -------- RESET -------- */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(160, 193, 236);
+
+/* -------- GLOBAL -------- */
+body {
+    /* keep base font under control, base.css sets the primary font */
     line-height: 1.6;
 }
-header{
-    top:0;
+
+header {
+    top: 0;
 }
-main{
+
+main {
     background-image: url('images/nature1.jpg');
     width: 100vw;
 }
-.slider{
-   position: relative;
-   width: 100vw;
-   height: 100vh;
-   overflow: hidden;
+
+/* -------- SLIDER -------- */
+.slider.hero{ /* full-screen hero */
+    position:relative;width:100%;min-height:76vh;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;margin-top:28px;padding-bottom:8px
 }
+
 .slide{
-    display: flex;
-    height: 100%;
-    width: 400vw;
-    animation: slide 21s linear infinite;
+    display:flex;height:100%;width:400vw;animation:slide 21s linear infinite;align-items:center
 }
-.slide img{
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-}
+
+.slide.paused{animation-play-state:paused}
+
+.slide img{width:100vw;height:70vh;object-fit:cover;filter:contrast(.95) saturate(.96)}
+
+/* Animation propre + timings alignés */
 @keyframes slide {
-    0% { transform: translateX(0); }
-    22.22% { transform: translateX(0); }
+    0%, 22% {
+        transform: translateX(0);
+    }
+    33%, 55% {
+        transform: translateX(-100vw);
+    }
+    66%, 88% {
+        transform: translateX(-200vw);
+    }
+    100% {
+        transform: translateX(-300vw);
+    }
+}
 
-    33.33% { transform: translateX(-100vw); }
-    55.55% { transform: translateX(-100vw); }
+/* -------- CAPTION -------- */
+.caption{position:absolute;left:50%;transform:translateX(-50%);top:18%;text-align:center;max-width:84%;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(6,12,8,0.46), rgba(12,18,22,0.14));backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.06)}
 
-    66.66% { transform: translateX(-200vw); }
-    88.88% { transform: translateX(-200vw); }
-    
-    100% { transform: translateX(-300vw); }
-}
-.caption{
-    position: absolute;
-    top: 30%;
-    left: 15%;
-    text-align : center;
-}
-.caption h2{
-     font-size: 30px;
-     color: blanchedalmond;
-}
-.caption p{
-    font-size: 13px;
-    color: rgb(5, 14, 32);
-    line-height: 1.6;
-}
-.slider button{
-    position: absolute;
-    top:63%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    padding: 10px 20px;
-    color: white;
-    background: linear-gradient(to bottom,rgb(32, 44, 46),gray);
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-}
-.slider button:hover{
-    font-size: 16px;
-    background : linear-gradient(to bottom,gray,rgb(32, 44, 46));;
-}
+.caption h2{font-size:2.2rem;color:var(--card);text-shadow:0 6px 18px rgba(3,9,13,0.5);margin-bottom:8px;letter-spacing:0.1px}
+
+.caption p{font-size:1rem;color:rgba(255,255,255,0.94);line-height:1.6;max-width:72%;margin:0 auto}
+
+/* -------- BUTTON -------- */
+.slider .btn{position:absolute;top:64%;left:50%;transform:translate(-50%,-50%)}
+.slider .btn.secondary{background:transparent;color:var(--card);border:2px solid rgba(255,255,255,0.12)}
+.slide img{transition:transform .9s ease,filter .6s ease}
+.slide img:hover{transform:scale(1.03);filter:contrast(1.06) saturate(1.08)}
+
+/* Responsiveness */
+@media (max-width:900px){.slide img{height:52vh}.caption h2{font-size:1.6rem}.caption{top:18%}}
+@media (max-width:620px){.slide img{height:48vh}.caption{top:12%;padding:14px}.caption h2{font-size:1.3rem}}

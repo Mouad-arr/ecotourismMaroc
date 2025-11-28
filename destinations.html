@@ -4,26 +4,93 @@
       <title>ÉDestinations écologiques</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <link rel="stylesheet" href="CSS/base.css" type="text/css">
       <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
       <link rel="stylesheet" href="CSS/DestinationsSty.css" type="text/css">
    </head>
    <body>
-      <header>
-         <div class="title">
-            <h1 align="center">ÉcoTourisme Maroc</h1>
-            <p align="center">Explorer, Respecter, Préserver</p>
-         </div>
-         <nav  align="center">
-            <a href="accueil.html">Accueil</a>&nbsp;
-            <a href="destinations.html">Destinations écologiques</a>&nbsp;
-            <a href="Activite.html">Activités</a>&nbsp;
-            <a href="consielsBlog.html">Conseils & Blog </a>&nbsp;
-            <a href="apropos.html">A propos</a>&nbsp;
-            <a href="contact.html">Contact</a>
-         </nav>
-      </header>
-      <footer align="center">
-         <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
-      </footer>
+         <header>
+            <div class="header-inner container">
+                      <div class="title">
+                  <h1>ÉcoTourisme Maroc</h1>
+                  <p>Explorer • Respecter • Préserver</p>
+               </div>
+                      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                      </button>
+               <nav class="main-nav">
+                  <a href="accueil.html">Accueil</a>
+                  <a href="destinations.html" class="active">Destinations</a>
+                  <a href="Activite.html">Activités</a>
+                  <a href="consielsBlog.html">Blog</a>
+                  <a href="apropos.html">À propos</a>
+                  <a href="contact.html">Contact</a>
+               </nav>
+            </div>
+         </header>
+         <main class="container">
+            <h1 class="page-title">Destinations écologiques — Découvrez nos sélections</h1>
+
+            <div class="dest-grid">
+               <article class="dest-card">
+                  <img src="images/nature1.jpg" alt="Montagne marocaine">
+                  <div class="body">
+                     <h3>Parc national du Haut Atlas</h3>
+                     <p>Randonnées guidées, villages Berbères et richesses naturelles à préserver.</p>
+                     <div class="dest-meta">
+                       <div class="dest-tags"><span class="tag">Randonnée</span><span class="tag">Montagne</span></div>
+                       <div class="dest-stats">
+                         <div class="stat"><span class="dot"></span><span>Durée 3-5 jours</span></div>
+                         <div class="stat"><span>⚑</span><span>Niveau: Moyen</span></div>
+                         <div class="dest-cta"><a class="btn secondary" href="">En savoir +</a></div>
+                       </div>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="dest-card">
+                  <img src="images/nature7.jpg" alt="Oasis et dunes">
+                  <div class="body">
+                     <h3>Oasis et désert</h3>
+                     <p>Immersion culturelle, bivouac responsable et initiatives locales.</p>
+                     <div class="dest-meta">
+                       <div class="dest-tags"><span class="tag">Désert</span><span class="tag">Culture</span></div>
+                       <div class="dest-stats">
+                         <div class="stat"><span class="dot"></span><span>3 jours</span></div>
+                         <div class="stat"><span>⚑</span><span>Niveau: Facile</span></div>
+                         <div class="dest-cta"><a class="btn secondary" href="">En savoir +</a></div>
+                       </div>
+                     </div>
+                  </div>
+               </article>
+
+               <article class="dest-card">
+                  <img src="images/nature6.jpg" alt="Littoral préservé">
+                  <div class="body">
+                     <h3>Littoraux sauvages</h3>
+                     <p>Observation des zones côtières protégées et actions de nettoyage communautaire.</p>
+                     <div class="dest-meta">
+                       <div class="dest-tags"><span class="tag">Côte</span><span class="tag">Nature</span></div>
+                       <div class="dest-stats">
+                         <div class="stat"><span class="dot"></span><span>1-2 jours</span></div>
+                         <div class="stat"><span>⚑</span><span>Niveau: Facile</span></div>
+                         <div class="dest-cta"><a class="btn secondary" href="">En savoir +</a></div>
+                       </div>
+                     </div>
+                  </div>
+               </article>
+            </div>
+            <div class="site-bottom-gap" aria-hidden="true"></div>
+         </main>
+
+         <footer>
+            <div class="footer-container container">
+               <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
+               <div><a href="contact.html">Contact</a></div>
+            </div>
+             </footer>
+          <script src="scripts/main.js" defer></script>
    </body>
 </html>
