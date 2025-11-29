@@ -3,12 +3,15 @@
     --bg: #f7fbff;
     --primary: #1a2e37; /* deep teal */
     --accent: #1ab95a;  /* green accent */
+  --success: #0a8b4b;
+  --danger: #e05b4a;
     --muted: #7a8791;
     --card: #ffffff;
     --glass: rgba(255,255,255,0.7);
     --radius: 12px;
   --max-width: 1200px;
   --footer-height: 72px; /* default footer height used by bottom panels */
+  --header-height: 36px; /* compact header height requested */
 }
 
 /* Reset */
@@ -27,6 +30,8 @@ body{
   line-height:1.5;
   /* reserve vertical space so the fixed footer doesn't overlap content */
   padding-bottom:calc(var(--footer-height) + 12px);
+  /* reserve space at top so sticky header doesn't overlap first content */
+  padding-top:calc(var(--header-height) + 1px);
 }
 
 /* Utility container and helpers */
@@ -51,6 +56,24 @@ body{
 /* Simple form styles */
 input,textarea,select{font-family:inherit;padding:10px;border-radius:8px;border:1px solid rgba(10,10,10,0.06);width:100%}
 
+/* inline error & status messages for forms */
+.error-message{color:var(--danger);font-size:13px;margin-top:6px;min-height:18px}
+
+#formMessage{font-size:14px;border-radius:8px;padding:8px 10px}
+#formMessage.success{color:var(--success);background:linear-gradient(180deg,rgba(10,140,74,0.08),rgba(10,140,74,0.02));border:1px solid rgba(10,140,74,0.08)}
+#formMessage.error{color:var(--danger);background:linear-gradient(180deg,rgba(224,91,74,0.06),rgba(224,91,74,0.02));border:1px solid rgba(224,91,74,0.06)}
+
+/* file preview */
+#filePreview img{width:96px;height:64px;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+#filePreview .meta{font-size:13px;color:var(--muted)}
+
+/* textarea character counter */
+.char-counter{font-size:13px;color:var(--muted);padding:4px 8px;border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,0.94),rgba(255,255,255,0.98));box-shadow:0 6px 18px rgba(7,12,15,0.04);font-weight:700}
+.char-counter.warn{color:var(--danger);background:linear-gradient(180deg,rgba(224,91,74,0.04),rgba(224,91,74,0.02));box-shadow:0 8px 20px rgba(224,91,74,0.04)}
+
+
+/* dark-mode support removed — project uses single visual style */
+
 /* Accessible focus */
 a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(26,185,90,0.18);outline-offset:2px}
 
@@ -64,11 +87,35 @@ a:focus,button:focus,input:focus,textarea:focus{outline:3px solid rgba(26,185,90
 .mt-18{margin-top:18px}
 .site-bottom-gap{height:3.5rem} /* a little empty space before footer */
 
+/* Activity page */
+.activity-intro{background:linear-gradient(90deg, rgba(26,185,90,0.06), rgba(10,30,40,0.02));padding:18px;border-radius:12px;margin-bottom:18px;color:var(--primary)}
+.activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.activity-card{display:flex;flex-direction:column;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#fff,rgba(255,255,255,0.96));box-shadow:0 12px 28px rgba(3,9,13,0.06);transition:transform .18s ease,box-shadow .18s ease}
+.activity-card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(3,9,13,0.12)}
+.activity-card img{width:100%;height:160px;object-fit:cover}
+.activity-card .content{padding:14px;display:flex;flex-direction:column;gap:8px}
+.activity-tag{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg, rgba(26,185,90,0.08), rgba(255,255,255,0.9));color:var(--accent);font-weight:700;font-size:12px}
+.activity-meta{display:flex;gap:10px;color:var(--muted);font-size:13px;align-items:center}
+
+@media (max-width:1100px){.activity-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.activity-grid{grid-template-columns:1fr}}
+
+/* Blog styles */
+.blog-featured{display:flex;gap:16px;align-items:stretch;background:linear-gradient(180deg, #fff, rgba(255,255,255,0.96));padding:18px;border-radius:12px;box-shadow:0 12px 28px rgba(3,9,13,0.06)}
+.blog-featured img{width:280px;height:160px;object-fit:cover;border-radius:8px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.post-card{background:var(--card);padding:16px;border-radius:10px;box-shadow:0 10px 20px rgba(3,9,13,0.06);transition:transform .16s ease}
+.post-card:hover{transform:translateY(-6px)}
+.post-meta{font-size:12px;color:var(--muted);margin-bottom:8px}
+
+@media (max-width:1100px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.blog-featured{flex-direction:column}.blog-featured img{width:100%;height:160px}.blog-grid{grid-template-columns:1fr}}
+
 /* Accent button for hero/primary CTAs */
 .btn.accent{background:linear-gradient(180deg,var(--accent),#0fa84b);color:#fff;border:none;box-shadow:0 12px 30px rgba(13, 61, 42, 0.16)}
 
 /* CTA micro-interaction */
-.btn.accent:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 20px 46px rgba(13,61,42,0.16)}
+.btn.accent:hover{transform:scale(1.04);box-shadow:0 20px 46px rgba(13,61,42,0.16)}
 .btn.accent:active{transform:translateY(-1px) scale(.995)}
 .btn.pulse{animation:cta-pulse 3.6s infinite ease-in-out}
 @keyframes cta-pulse{0%{box-shadow:0 8px 24px rgba(26,185,90,0.12)}50%{box-shadow:0 20px 44px rgba(26,185,90,0.12)}100%{box-shadow:0 8px 24px rgba(26,185,90,0.12)}}
