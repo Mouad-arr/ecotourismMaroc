@@ -33,12 +33,12 @@
 
   // Auto add active class to nav link where href matches page name
   function markActiveNav(){
-    const path = location.pathname.split('/').pop() || 'accueil.html';
+    const path = location.pathname.split('/').pop() || 'index.html';
     qsa('nav.main-nav a').forEach(a=>{
       const href = a.getAttribute('href');
       if(!href) return;
       // consider simple matching rules
-      if(path === href || (href.endsWith('accueil.html') && path === '')){
+      if(path === href || (href.endsWith('index.html') && path === '')){
         a.classList.add('active');
       }
     })
