@@ -1,13 +1,16 @@
 /* Header and Footer styles — keep base.css included by the HTML pages. */
 header{
-  display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:1200;background:transparent;padding:14px 0;backdrop-filter: blur(6px);
+  display:flex;align-items:center;justify-content:center;position:sticky;top:0;z-index:1200;background:transparent;padding:4px 0;backdrop-filter: blur(6px);
+  position:relative; /* allow absolute logo placement */
+  height:var(--header-height);
 }
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;max-width:var(--max-width);padding:0 20px}
-.title{display:flex;align-items:center;gap:10px}
-.title h1{font-size:1.1rem;color:var(--primary);margin:0}
-.title p{font-size:.85rem;color:var(--muted);margin:0}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;width:100%;max-width:var(--max-width);padding:0 8px}
+.title{display:flex;align-items:center;gap:10px;position:absolute;left:6px;top:50%;transform:translateY(-50%);z-index:1300}
+.title h1{font-size:2.2rem;color:var(--primary);margin:0;font-weight:800;letter-spacing:0.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(50vw)}
+.title p{font-size:1rem;color:var(--muted);margin:0;margin-left:2px}
 
-nav.main-nav{display:flex;gap:10px;align-items:center}
+/* Desktop: place nav at the right edge of the header so title can be flush-left */
+nav.main-nav{display:flex;gap:10px;align-items:center;position:absolute;right:12px;top:50%;transform:translateY(-50%)}
 nav.main-nav a{display:inline-block;padding:8px 14px;border-radius:10px;color:var(--primary);text-decoration:none;font-weight:700;background:linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.95));box-shadow:0 6px 14px rgba(17,24,30,0.06);transition:transform .16s ease,box-shadow .16s ease,color .12s ease}
 nav.main-nav a:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(17,24,30,0.12);color:var(--accent)}
 nav.main-nav a:focus-visible{outline:2px solid rgba(26,185,90,0.18);border-radius:8px}
@@ -19,16 +22,17 @@ nav.main-nav a.active{background:linear-gradient(180deg, rgba(26,185,90,0.12), r
 .footer-container a{color:rgba(255,255,255,0.8);text-decoration:none}
 .footer-container a:hover{color:var(--accent)}
 
-@media (max-width:900px){nav.main-nav{gap:6px} .title h1{font-size:1rem}}
-@media (max-width:620px){.header-inner{flex-direction:column;align-items:flex-start}nav.main-nav{flex-wrap:wrap}}
+@media (max-width:900px){nav.main-nav{gap:6px} .title h1{font-size:1.6rem} .title p{font-size:0.95rem}}
+@media (max-width:620px){.header-inner{flex-direction:column;align-items:flex-start}nav.main-nav{flex-wrap:wrap}.title h1{font-size:1.1rem}}
 
 /* Mobile nav toggle (hamburger) */
 .nav-toggle{display:none;border:0;background:transparent;padding:8px;border-radius:8px;cursor:pointer}
 .nav-toggle .bar{display:block;width:22px;height:2px;background:var(--primary);border-radius:2px;margin:4px 0;transition:transform .18s ease,opacity .18s ease}
 
 @media (max-width:900px){
-  .nav-toggle{display:inline-block}
-  nav.main-nav{display:none;position:absolute;top:68px;right:20px;background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.96));padding:14px;border-radius:10px;box-shadow:0 18px 50px rgba(5,10,15,0.12);flex-direction:column;min-width:200px}
+  .nav-toggle{display:inline-block;position:absolute;right:12px;top:50%;transform:translateY(-50%)}
+  /* mobile nav opens as an absolute panel under the header */
+  nav.main-nav{display:none;position:absolute;top:68px;right:12px;background:linear-gradient(180deg,#ffffff,rgba(255,255,255,0.96));padding:14px;border-radius:10px;box-shadow:0 18px 50px rgba(5,10,15,0.12);flex-direction:column;min-width:200px}
   header.nav-open nav.main-nav{display:flex}
   header.nav-open .nav-toggle .bar:nth-child(1){transform:translateY(6px) rotate(45deg)}
   header.nav-open .nav-toggle .bar:nth-child(2){opacity:0}

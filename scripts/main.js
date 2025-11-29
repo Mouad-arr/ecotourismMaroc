@@ -1,4 +1,6 @@
 // Basic site interactions: mobile menu, slider pause, active nav, back-to-top
+// main UI interactions
+
 (function(){
   function qs(sel, el=document){ return el.querySelector(sel) }
   function qsa(sel, el=document){ return Array.from(el.querySelectorAll(sel)) }
@@ -68,4 +70,6 @@
     markActiveNav();
     createBackToTop();
   });
+
+  // no page-load animation (removed to avoid layout movement)
 })();
