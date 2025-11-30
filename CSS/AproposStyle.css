@@ -13,6 +13,117 @@
     text-align: center;
     margin: 90px auto;
 }
+
+.intro {
+    text-align: center;
+    color:rgb(26, 21, 58) ;
+    margin-bottom: 60px;
+}
+
+.intro h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.intro p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.team-member {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0 auto 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.team-member h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.role {
+    color: #667eea;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.skill-tag {
+    background: #f0f0f0;
+    color: #555;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    transition: background 0.3s ease;
+}
+
+.skill-tag:hover {
+    background: #667eea;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .intro h1 {
+        font-size: 2em;
+    }
+
+    .intro p {
+        font-size: 1em;
+    }
+
+    .team-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 .parag h3{
     border-bottom: 1px solid #000;
     padding-bottom: 2px;
@@ -37,14 +148,14 @@
 .obj section h1::after {
   content: ""; 
   
-  width: 80px;  /* (par exemple, 50px) */
-  height: 5px;  /* L'épaisseur de votre ligne */
+  width: 80px;  
+  height: 5px;  
   
-  background-color: green; /* La couleur de votre ligne */
+  background-color: green; 
   
   position: absolute;
-  left: 7px; /* Commence au début du titre */
-  bottom: -5px; /* Espace entre le texte et la ligne (ajustez si besoin) */
+  left: 7px;
+  bottom: -5px; 
 }
 .obj section h4{
     text-align: center;
