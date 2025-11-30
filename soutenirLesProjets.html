@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourisme Solidaire et Impact Local</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: #444;
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcfc;
+        }
+
+        h1, h2, h3 { color: #0f2c3e; margin-top: 0; }
+
+        .hero-header {
+            background-color: #0f2c3e;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-tag {
+            background-color: #3498db;
+            color: white;
+            padding: 6px 12px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            color : rgba(253, 252, 252, 0.911) ;
+            font-size: 2.5rem;
+            max-width: 900px;
+            margin: 0 auto 15px;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #bdc3c7;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            text-align: justify; /* Justifié pour un aspect plus pro */
+            margin-bottom: 60px;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 40px;
+        }
+
+        .initiative-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-left: 6px solid #3498db;
+        }
+
+        .card-body { padding: 30px; }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .card-location {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 0;
+            text-align: justify;
+        }
+
+        .quote-block {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0f2c3e;
+            padding: 30px;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .quote-text {
+            font-family: 'Georgia', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #555;
+            display: block;
+            text-align: right;
+        }
+
+        .tips-section { margin-top: 60px; }
+        .tips-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #0f2c3e;
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .tip-item {
+            background: #fff;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+        .tip-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .tip-item h4 { color: #e67e22; margin-bottom: 10px; font-size: 1.1rem;}
+
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: #0f2c3e;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: sans-serif;
+            border-bottom: 2px solid transparent;
+        }
+        .back-link:hover { border-bottom-color: #0f2c3e; }
+
+        @media (min-width: 768px) {
+            .initiative-card { flex-direction: row; align-items: center; }
+            .card-body { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <span class="hero-tag">Développement & Solidarité</span>
+        <h1 class="hero-title">Tourisme Solidaire : Levier de Développement pour les Communautés Locales</h1>
+        <p class="hero-subtitle">Analyse de l'impact économique du voyageur responsable et valorisation des initiatives rurales.</p>
+    </header>
+
+    <main class="container">
+        
+        <p class="intro-text">
+            Le tourisme responsable ne se limite pas à la réduction de l'empreinte écologique ; il intègre une dimension éthique et économique fondamentale. Au Maroc, le choix de vos prestataires et de vos achats peut devenir un puissant vecteur de développement. En privilégiant les circuits courts, le voyageur participe activement à la pérennité des savoir-faire ancestraux et à l'autonomisation des populations rurales.
+        </p>
+
+        <article class="initiative-card">
+            <div class="card-body">
+                <div class="card-location">📍 Région Souss-Massa — Filière Argan</div>
+                <h2 class="card-title">L'autonomisation économique des femmes</h2>
+                <p class="card-text">
+                    L'industrie de l'huile d'argan est un pilier socio-économique majeur dans le sud marocain. Toutefois, la commercialisation de masse tend à diluer les revenus des productrices. Il est primordial de s'orienter vers des coopératives certifiées et transparentes.
+                    <br><br>
+                    <strong>L'impact direct :</strong> L'achat à la source garantit une rémunération équitable, finançant souvent des programmes d'alphabétisation et offrant une indépendance financière cruciale aux femmes des zones rurales.
+                </p>
+            </div>
+        </article>
+
+        <div class="quote-block">
+            <p class="quote-text">« L'acte d'achat n'est pas anodin. Acquérir un produit artisanal directement auprès de son créateur, c'est reconnaître la valeur du temps humain et préserver un patrimoine culturel immatériel face à l'industrialisation. »</p>
+            <span class="quote-author">— Rapport sur le Développement Humain Durable (Initiative Locale)</span>
+        </div>
+
+        <article class="initiative-card" style="border-left-color: #e67e22;">
+            <div class="card-body">
+                <div class="card-location">📍 Vallée du Drâa — Artisanat d'Art</div>
+                <h2 class="card-title">Préservation du patrimoine immatériel</h2>
+                <p class="card-text">
+                    À Tamegroute, les ateliers de poterie perpétuent des techniques séculaires uniques au monde. Face à la concurrence des produits manufacturés, la survie de cet artisanat dépend de la demande directe. Visiter les ateliers et privilégier l'achat sans intermédiaire permet de maintenir vivante cette transmission intergénérationnelle et de lutter contre l'exode rural des jeunes artisans.
+                </p>
+            </div>
+        </article>
+
+        <article class="initiative-card" style="border-left-color: #2ecc71;">
+            <div class="card-body">
+                <div class="card-location">📍 Haut Atlas — Agrotourisme</div>
+                <h2 class="card-title">Soutien aux filières agricoles d'excellence</h2>
+                <p class="card-text">
+                    L'agrotourisme autour du Safran (Taliouine) ou de la Rose (Kelaat M'Gouna) offre une alternative durable au tourisme de masse. En participant aux récoltes ou en achetant les produits du terroir directement aux agriculteurs, le visiteur valorise une agriculture vivrière respectueuse de l'environnement et soutient l'économie locale au moment où les producteurs en ont le plus besoin.
+                </p>
+            </div>
+        </article>
+
+        <section class="tips-section">
+            <h3 class="tips-title">Guide de l'achat éthique</h3>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <h4>Transparence & Traçabilité</h4>
+                    <p>Privilégiez les structures capables d'expliquer leur processus de fabrication et la répartition des revenus. La rencontre avec l'artisan reste le meilleur gage d'authenticité.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>Éthique de la négociation</h4>
+                    <p>Si le marchandage est culturel, il doit rester digne. Une négociation excessive peut précariser l'artisan. L'objectif est le "juste prix" (Fair Price), non le prix le plus bas.</p>
+                </div>
+                <div class="tip-item">
+                    <h4>Labels & Certifications</h4>
+                    <p>Recherchez les Indications Géographiques Protégées (IGP) pour l'alimentaire et les labels de commerce équitable qui garantissent le respect des normes sociales et environnementales.</p>
+                </div>
+            </div>
+        </section>
+
+        <div style="text-align: center;">
+            <a href="consielsBlog.html" class="back-link">← Retour au blog</a>
+        </div>
+
+    </main>
+</body>
+</html>
