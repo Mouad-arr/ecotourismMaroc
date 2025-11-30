@@ -103,7 +103,19 @@
             align-items: center;
         }
         .info-icon { font-size: 2rem; margin-right: 15px; }
-
+         .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: #0f2c3e;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: sans-serif;
+            border-bottom: 2px solid transparent;
+        }
+        .back-link:hover { border-bottom-color: #0f2c3e; }
+        @media(min-width: 768px){
+            .container{ flex-direction: row; align-items: center; }
+        }
     </style>
 </head>
 <body>
@@ -179,7 +191,7 @@
         </div>
         
         <div style="margin-top: 30px; text-align: center;">
-            <a href="consielsBlog.html" style="color: #0f2c3e; font-weight: bold; text-decoration: none;">← Retour au blog</a>
+            <a href="consielsBlog.html" class="back-link ">← Retour au blog</a>
         </div>
     </main>
 
