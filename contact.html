@@ -30,17 +30,71 @@
             </div>
          </header>
          <main class="page-bottom-panel container" aria-labelledby="contact-title">
-        <section class="card page-section">
+            <section class="card page-section">
                <h2>Contactez-nous</h2>
                <p class="muted">Pour toute question, suggestion ou collaboration contactez l'équipe.</p>
+                 <form id="contactForm" novalidate style="margin-top:14px;display:grid;gap:12px">
+                     <div style="display:flex;gap:12px;flex-wrap:wrap">
+                        <label style="flex:1 1 220px">Nom complet
+                           <input id="fullname" name="fullname" required placeholder="Votre nom complet">
+                           <div class="error-message" aria-live="polite"></div>
+                        </label>
+
+                        <label style="width:120px">Âge
+                           <input id="age" name="age" type="number" min="0" required placeholder="18+">
+                           <div class="error-message" aria-live="polite"></div>
+                        </label>
+
+                        <label style="flex:1 1 260px">Email
+                           <input id="email" name="email" type="email" required placeholder="exemple@domaine.com">
+                           <div class="error-message" aria-live="polite"></div>
+                        </label>
+                     </div>
+
+                     <div style="display:flex;gap:12px;flex-wrap:wrap">
+                        <label style="flex:1 1 220px">Mot de passe
+                           <input id="password" name="password" type="password" required placeholder="6+ caractères">
+                           <div class="error-message" aria-live="polite"></div>
+                        </label>
+
+                        <label style="flex:1 1 220px">Confirmer le mot de passe
+                           <input id="confirmPassword" name="confirmPassword" type="password" required placeholder="Répétez le mot de passe">
+                           <div class="error-message" aria-live="polite"></div>
+                        </label>
+                     </div>
+
+                     <label>Joindre un fichier (pdf, jpg/jpeg)
+                        <input id="fileInput" name="file" type="file" accept=".pdf,.jpg,.jpeg">
+                        <div class="error-message" aria-live="polite"></div>
+                     </label>
+
+                     <div id="filePreview" style="display:flex;align-items:center;gap:10px"></div>
+
+                     <label>Message
+                        <textarea id="message" name="message" rows="3" maxlength="500" placeholder="Votre message (optionnel)"></textarea>
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:6px">
+                           <div class="error-message" aria-live="polite"></div>
+                           <div id="messageCounter" class="char-counter" aria-live="polite">0 / 500</div>
+                        </div>
+                     </label>
+
+                     <div style="display:flex;align-items:center;gap:8px">
+                        <button type="submit" class="btn">Envoyer</button>
+                     <div style="margin-left:auto;display:flex;align-items:center;gap:6px">
+                     </div>
+                     </div>
+
+                     <div id="formMessage" role="status" aria-live="polite" style="margin-top:6px"></div>
+                  </form>
             </section>
-     </main>
+         </main>
      <footer class="fixed-footer">
         <div class="footer-container container">
            <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
            <div><a href="apropos.html">À propos</a></div>
         </div>
      </footer>
-    <script src="scripts/main.js" defer></script>
+         <script src="scripts/main.js" defer></script>
+         <script src="scripts/contact.js" defer></script>
     </body>
 </html>
