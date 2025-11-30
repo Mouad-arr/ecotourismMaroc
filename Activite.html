@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1.0">
       <link rel="stylesheet" href="CSS/base.css" type="text/css">
       <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
+      <link rel="stylesheet" href="CSS/ActivitesStyle.css" type="text/css">
    </head>
    <body>
          <header>
@@ -30,23 +31,141 @@
             </div>
          </header>
       <main class="container">
-            <section class="page-section">
-                  <h1 class="page-title">Activités éco-responsables</h1>
-                  <div class="row mt-16">
-                     <div class="card col">
-                        <h4>Randonnées guidées</h4>
-                        <p class="muted">Balades guidées par des experts locaux, respectant les sentiers et la faune.</p>
-                     </div>
-                     <div class="card col">
-                        <h4>Ateliers artisanaux</h4>
-                        <p class="muted">Rencontres avec artisans locaux pour découvrir pratiques durables.</p>
-                     </div>
-                     <div class="card col">
-                        <h4>Immersion culturelle</h4>
-                        <p class="muted">Séjours chez l'habitant et apprentissage des traditions et savoir-faire.</p>
-                     </div>
-                  </div>
-             </section>
+           <h1>Activités éco-responsables</h1>
+
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="icon">🥾</div>
+                <h3>Randonnées guidées</h3>
+                <p>Balades guidées par des experts locaux, respectant les sentiers et la faune.</p>
+            </div>
+
+            <div class="activity-card">
+                <div class="icon">🎨</div>
+                <h3>Ateliers artisanaux</h3>
+                <p>Rencontres avec artisans locaux pour découvrir pratiques durables.</p>
+            </div>
+
+            <div class="activity-card">
+                <div class="icon">🏛️</div>
+                <h3>Immersion culturelle</h3>
+                <p>Séjours chez l'habitant et apprentissage des traditions et savoir-faire.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Notre Sélection d'Activités</h2>
+        <div class="activities-list">
+            <ul>
+                <li>Trekking dans le Toubkal <span>Parc National, Haut Atlas (4167m)</span></li>
+                <li>Observation des oiseaux <span>Parc National de Souss-Massa</span></li>
+                <li>Ateliers de poterie <span>Safi et Tamegroute</span></li>
+                <li>Cuisine tajine solaire <span>Oasis de Zagora</span></li>
+                <li>Randonnée chamelière <span>Dunes de Merzouga (Erg Chebbi)</span></li>
+                <li>Coopératives d'argan <span>Région d'Essaouira et Agadir</span></li>
+                <li>Initiation au tissage <span>Taznakht et Aït Bouguemez</span></li>
+                <li>Randonnée Gorges <span>Todra et Dadès</span></li>
+                <li>Villages berbères <span>Vallée des Roses (Kelaa M'Gouna)</span></li>
+                <li>Visite écologique <span>Cascades d'Ouzoud</span></li>
+                <li>Réserve de cèdres <span>Azrou (Singes magots)</span></li>
+                <li>Trek massif M'Goun <span>Avec guides locaux certifiés</span></li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Galerie Interactive</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-placeholder"><img src="images/montToubkal.jpg" placehoder="Mont Toubkal"></div>
+                <div class="gallery-caption">Mont Toubkal</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder"><img src="images/merzouga.jfif" placehoder="Merzouga"></div>
+                <div class="gallery-caption">Merzouga</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder"><img src="images/toudgha.jfif" placehoder="toudgha"></div>
+                <div class="gallery-caption">Gorges du Todgha</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder"><img src="images/valle.jfif" placehoder="Vallée des Roses"></div>
+                <div class="gallery-caption">Vallée des Roses</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder"><img src="images/ouzoud.jfif" placehoder="ouzoud"></div>
+                <div class="gallery-caption">Ouzoud</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-placeholder"><img src="images/azrou.jpg" placehoder="azrou"></div>
+                <div class="gallery-caption">Forêt Azrou</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Autres expériences</h2>
+        <div class="additional-activities">
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Vallée+de+l'Ourika+Maroc" target="_blank" class="location-badge">
+                    📍 Vallée de l'Ourika
+                </a>
+                <h4>Agrotourisme & Safran</h4>
+                <p>Séjours fermes biologiques, récolte de safran et découverte des plantes aromatiques.</p>
+            </div>
+            
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Palmeraie+Skoura+Ouarzazate" target="_blank" class="location-badge">
+                    📍 Ouarzazate & Skoura
+                </a>
+                <h4>Architecture en terre (Pisé)</h4>
+                <p>Découverte des techniques de construction ancestrales et visite de Kasbahs éco-durables.</p>
+            </div>
+            
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Jardins+de+l'Agdal+Marrakech" target="_blank" class="location-badge">
+                    📍 Marrakech
+                </a>
+                <h4>Jardins & Systèmes d'eau</h4>
+                <p>Visite des jardins de l'Agdal et de la Menara pour comprendre les systèmes d'irrigation khettara.</p>
+            </div>
+            
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Parc+National+Ifrane" target="_blank" class="location-badge">
+                    📍 Ifrane & Azrou
+                </a>
+                <h4>VTT & Forêts de Cèdres</h4>
+                <p>Circuits guidés respectueux de l'environnement à travers les forêts du Moyen Atlas.</p>
+            </div>
+            
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Désert+d'Agafay" target="_blank" class="location-badge">
+                    📍 Désert d'Agafay
+                </a>
+                <h4>Bivouac Étoilé</h4>
+                <p>Nuit en camp écologique minimaliste (sans électricité) pour une observation pure du ciel.</p>
+            </div>
+            
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Vallée+des+Roses+Kelaa+M'Gouna" target="_blank" class="location-badge">
+                    📍 Kelaa M'Gouna
+                </a>
+                <h4>Distillation de Roses</h4>
+                <p>Participation à la cueillette et découverte du processus de distillation d'eau de rose.</p>
+            </div>
+
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Vallée+du+Drâa+Zagora" target="_blank" class="location-badge">
+                    📍 Vallée du Drâa
+                </a>
+                <h4>Kayak dans les Palmeraies</h4>
+                <p>Descente douce de la rivière pour observer l'écosystème des oasis sans moteur.</p>
+            </div>
+
+            <div class="activity-item">
+                <a href="https://www.google.com/maps/search/?api=1&query=Sidi+Kaouki+Essaouira" target="_blank" class="location-badge">
+                    📍 Essaouira / Sidi Kaouki
+                </a>
+                <h4>Retraite Yoga & Surf</h4>
+                <p>Séjours bien-être combinant sport et méditation face à l'océan Atlantique.</p>
+            </div>
+        </div>
+        </div>
       </main>
             <div class="site-bottom-gap" aria-hidden="true"></div>
          <footer>
