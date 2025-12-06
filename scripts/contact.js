@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const allowedExt = ['pdf','jpg','jpeg'];
 
-  // dark-mode removed by request — no theme toggle logic
 
   function setError(el, msg) {
     const container = el.closest('label') || el.parentElement;
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // initialize counter
     updateMessageCounter();
     message.addEventListener('input', () => {
-      // enforce maxlength if not widely supported
       if (message.value.length > MAX_MESSAGE) message.value = message.value.slice(0, MAX_MESSAGE);
       updateMessageCounter();
     });
@@ -83,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Size limit safety (5MB)
+  
     if (f.size > 5 * 1024 * 1024) {
       setError(fileInput, 'Fichier trop volumineux (max 5MB).');
       fileInput.value = '';
       return;
     }
 
-    // If image, show preview thumbnail
+   
     if (ext === 'jpg' || ext === 'jpeg'){
       const img = document.createElement('img');
       img.alt = name;
@@ -106,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Basic email test
+  
   function isEmail(v){
     return /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/.test(v);
   }
@@ -140,13 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!valid){ setStatus('Le formulaire contient des erreurs. Corrigez les champs indiqués.', 'error'); return; }
 
-    // Simulate a successful submission — front-end only
+  
     setStatus('Merci — votre message a été envoyé (simulation). Nous vous répondrons bientôt.', 'success');
 
-    // clear inputs (keep theme)
     form.reset();
     filePreview.innerHTML = '';
-    // Keep success message for a short while then clear
     setTimeout(() => { clearStatus(); }, 5500);
   });
 });

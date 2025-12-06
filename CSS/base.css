@@ -32,11 +32,9 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
-  /* reserve vertical space so the fixed footer doesn't overlap content */
   padding-bottom:calc(var(--footer-height) + 12px);
 }
 
-/* Utility container and helpers */
 .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
 .row{display:flex;gap:24px;flex-wrap:wrap}
 .col{flex:1 1 0}

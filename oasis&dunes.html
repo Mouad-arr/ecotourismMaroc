@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/base.css" type="text/css">
+    <link rel="stylesheet" href="CSS/navFooterSty.css" type="text/css">
+    <title>Oasis et désert</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            position: relative;
+            height: 500px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 40px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: rgba(230, 126, 34, 0.9);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .main-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .main-content h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e67e22;
+        }
+
+        .main-content h3 {
+            color: #34495e;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .main-content p {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 1.05rem;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card ul {
+            list-style: none;
+        }
+
+        .info-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .info-value {
+            color: #e67e22;
+            font-weight: 500;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .activity-item {
+            background: #fff3e6;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e67e22;
+        }
+
+        .activity-item h4 {
+            color: #d35400;
+            margin-bottom: 5px;
+        }
+
+        .activity-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        .impact-section {
+            background: linear-gradient(135deg, #fff3e6 0%, #ffe6cc 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+
+        .impact-section h3 {
+            color: #d35400;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 25px;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <div class="header-inner container">
+                      <div class="title">
+                  <h1>ÉcoTourisme Maroc</h1>
+                  <p>Explorer • Respecter • Préserver</p>
+               </div>
+                      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                         <span class="bar"></span>
+                      </button>
+               <nav class="main-nav">
+                  <a href="index.html">Accueil</a>
+                  <a href="destinations.html" class="active">Destinations</a>
+                  <a href="Activite.html">Activités</a>
+                  <a href="consielsBlog.html" >Blog</a>
+                  <a href="apropos.html">À propos</a>
+                  <a href="contact.html">Contact</a>
+               </nav>
+            </div>
+    </header>
+    <main>
+        <div class="hero">
+            <img src="images/nature7.jpg" alt="Oasis et désert">
+            <div class="hero-overlay">
+                <h1>Oasis et désert</h1>
+                <p>Une immersion culturelle au cœur des traditions sahariennes</p>
+                <div class="hero-tags">
+                    <span class="tag">Désert</span>
+                    <span class="tag">Culture</span>
+                    <span class="tag">Bivouac</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="main-content">
+                <h2>Vivez l'authenticité du désert</h2>
+                <p>Plongez dans l'univers fascinant des oasis sahariennes, où les dunes dorées rencontrent des îlots de verdure préservés depuis des siècles. Cette expérience unique vous invite à découvrir un mode de vie ancestral, façonné par l'harmonie entre l'homme et un environnement exigeant.</p>
+
+                <p>Notre approche privilégie une immersion culturelle respectueuse, où chaque rencontre avec les communautés locales devient un moment d'échange authentique. Vous serez accueillis par des familles nomades et des habitants des oasis qui partageront avec vous leurs traditions, leur artisanat et leur hospitalité légendaire.</p>
+
+                <h3>Une expérience culturelle profonde</h3>
+                <p>Participez à la vie quotidienne des oasis et découvrez les techniques ancestrales de gestion de l'eau, l'agriculture en milieu désertique et l'artisanat traditionnel. Les soirées autour du feu, sous un ciel étoilé incomparable, seront rythmées par la musique berbère et les récits des anciens.</p>
+
+                <div class="activities-grid">
+                    <div class="activity-item">
+                        <h4>🏜️ Trekking dans les dunes</h4>
+                        <p>Randonnées guidées à travers les paysages désertiques</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🎨 Artisanat local</h4>
+                        <p>Ateliers avec les artisans de l'oasis</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🌙 Nuits en bivouac</h4>
+                        <p>Camping traditionnel sous les étoiles</p>
+                    </div>
+                    <div class="activity-item">
+                        <h4>🍵 Cérémonies du thé</h4>
+                        <p>Découverte des rituels traditionnels</p>
+                    </div>
+                </div>
+
+                <h3>Tourisme responsable et initiatives locales</h3>
+                <p>Ce séjour s'inscrit dans une démarche de tourisme solidaire. Les revenus générés bénéficient directement aux communautés locales, notamment à travers le soutien aux associations féminines qui développent l'artisanat traditionnel et la gestion durable des ressources en eau.</p>
+
+                <p>Vous contribuerez également à des projets de préservation des oasis, menacées par la désertification et les changements climatiques. Des initiatives de plantation de palmiers et de restauration des systèmes d'irrigation traditionnels (khettaras) sont en cours avec la participation active des habitants.</p>
+
+                <div class="impact-section">
+                    <h3>🤝 Votre impact</h3>
+                    <p>En choisissant cette destination, vous soutenez 8 coopératives locales et participez à la préservation de 500 hectares d'oasis. Chaque séjour finance des projets d'accès à l'eau potable et de scolarisation des enfants dans les zones reculées.</p>
+                </div>
+
+                <a href="consielsBlog.html" class="cta-button">Lire nos articles</a>
+            </div>
+
+            <aside class="sidebar">
+                <div class="info-card">
+                    <h3>📋 Informations pratiques</h3>
+                    <ul>
+                        <li>
+                            <span class="info-label">Durée</span>
+                            <span class="info-value">3 jours</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Niveau</span>
+                            <span class="info-value">Facile</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Type</span>
+                            <span class="info-value">Culturel</span>
+                        </li>
+                        <li>
+                            <span class="info-label">Groupe</span>
+                            <span class="info-value">6-15 personnes</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>🌟 Ce qui vous attend</h3>
+                    <ul>
+                        <li>✓ Guides locaux nomades</li>
+                        <li>✓ Hébergement chez l'habitant</li>
+                        <li>✓ Repas traditionnels</li>
+                        <li>✓ Soirées musicales</li>
+                        <li>✓ Ateliers artisanat</li>
+                        <li>✓ Bivouac dans le désert</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>🌍 Engagement local</h3>
+                    <p style="color: #555; font-size: 0.95rem;">80% des revenus reversés aux communautés locales. Soutien aux coopératives féminines et projets de préservation des oasis.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>📅 Meilleure période</h3>
+                    <p style="color: #555; font-size: 0.95rem;"><strong>Octobre à Avril</strong><br>Températures agréables pour profiter pleinement du désert (15-25°C le jour).</p>
+                </div>
+            </aside>
+        </div>
+
+        <div class="highlights">
+            <div class="highlight-card">
+                <h4>🏛️ Culture authentique</h4>
+                <p>Immersion totale dans les traditions nomades et oasiennes</p>
+            </div>
+            <div class="highlight-card">
+                <h4>🤲 Rencontres humaines</h4>
+                <p>Échanges privilégiés avec les habitants et artisans locaux</p>
+            </div>
+            <div class="highlight-card">
+                <h4>♻️ Impact durable</h4>
+                <p>Soutien direct aux initiatives locales et préservation des oasis</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+            <div class="footer-container container">
+               <p>&copy; 2025 ÉcoTourisme Maroc — Tous droits réservés.</p>
+               <div><a href="contact.html">Contact</a></div>
+            </div>
+    </footer>
+    <script src="scripts/main.js" defer></script>
+</body>
+</html>
