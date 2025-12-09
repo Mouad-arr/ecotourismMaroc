@@ -1,74 +1,17 @@
 \documentclass[a4paper,12pt]{report}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
 
-%\usepackage[symbols]{circuitikz}
 
-\usepackage{tabularx} % Pour ajuster automatiquement la largeur
-\usepackage{array}
-
+\usepackage{muStyleReport}
+\usepackage{setspace}
 \usepackage[french]{babel}
 \usepackage{mdframed}
-
-
-\usepackage{hyperref}                  % Liens hypertexte
-\usepackage{geometry}                  % Gestion des marges
-\geometry{margin=2cm}  
-\usepackage{titlesec}
-
-\usepackage{amsmath,amsfonts,amstext,amssymb,epsfig,bbm,wasysym}
-\usepackage{gensymb}
-%\usepackage{mathrsfs}
-%\usepackage{eufrak}
-%\usepackage{unicode-math}
-%\setmathfont{STIX Math}
-%\def\kay{\ensuremath{\mscrk}}
-
-\usepackage{graphicx}
-
-
-\usepackage{multicol}  
-
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usetikzlibrary{arrows,plotmarks}
-\usepackage{circuitikz}
-
-%\usetikzlibrary{fandigs}
-\usetikzlibrary{positioning}
-\usetikzlibrary{shapes,calc,decorations.markings,decorations.pathreplacing}
-\usetikzlibrary{arrows,shapes,positioning}
-\usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
-\usetikzlibrary{calc,patterns,shapes.geometric}
+% Définir l'espacement
+\setstretch{1.3}
 
 
 
-\newcommand{\titreTP}[1]{%
-    \begin{tcolorbox}[colframe=black, colback=gray!10, width=\textwidth, sharp corners=south]
-        \centering
-        \LARGE \textbf{#1}
-    \end{tcolorbox}
-    \vspace{1cm} % Espacement après le titre
-}
-\newcommand{\definition}[2]{
-    \begin{tcolorbox}[colframe=black, colback=gray!10, title=\textbf{Définition : #1}]
-        #2
-    \end{tcolorbox}
-}
+\usepackage{tcolorbox}
 
-   \usepackage{tcolorbox}
-%   \titleformat{\section}[block]
-%  {\normalfont\Large\bfseries\color{red}}  % Style (police, taille, couleur)
-%  {\thesection}{1em}{}
-%  \titleformat{\subsection}[block]
-%  {\normalfont\Large\bfseries\color{blue}}  % Style (police, taille, couleur)
-%  {\thesection}{1em}{}
-%   \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{1em}{}
-
-
-%\usepackage{tcolorbox}
-%\usepackage{color,colortbl}
 \begin{document}
 % --- Page de garde ---
 \begin{titlepage}
@@ -121,34 +64,31 @@ Ce rapport présente la conception et le développement du site web \textbf{Éco
 \end{abstract}
 \tableofcontents
 \newpage
-\section*{Introduction }
-\subsection*{Contexte}
+\chapter{Introduction }
+\section{Contexte}
 Le tourisme figure parmi les secteurs clés de l'économie marocaine. Face aux menaces environnementales et à la nécessité d'un développement compatible avec la préservation des ressources naturelles, l'\textbf{écotourisme} se présente comme une alternative durable. Le projet \textit{ÉcoTourisme Maroc} consiste en la réalisation d'un site web vitrine destiné à promouvoir cette forme de tourisme au niveau national.
-\subsection*{Objectifs du projet }
+\section{Objectifs du projet }
 \begin{itemize}
   \item Sensibiliser le public au tourisme durable et aux bonnes pratiques.
   \item Présenter des destinations, activités et hébergements responsables au Maroc.
   \item Fournir des conseils pratiques et des parcours de voyage éco‑responsables.
   \item Mettre en place une expérience utilisateur claire, responsive et visuelle.
 \end{itemize}
-\subsection*{Périmètre}
+\section{Périmètre}
 Le site développé est un site statique (HTML/CSS/JS) hébergé sur GitHub Pages. Il ne comprend pas, dans sa version initiale, de back‑office ni de base de données. Le périmètre couvre : la page d'accueil, pages destinations, activités, blog/conseils, et page contact.
 
-\section*{Présentation du projet}
-\subsection*{Pourquoi un site de tourisme durable ?}
+\chapter{Présentation du projet}
+\section{Pourquoi un site de tourisme durable ?}
 Le tourisme de masse génère des impacts environnementaux et sociaux considérables : dégradation des écosystèmes, forte empreinte carbone, pression sur les ressources locales et perte d'authenticité culturelle. Face à ces défis, le tourisme durable s'impose comme une alternative nécessaire, visant à minimiser ces impacts tout en valorisant les communautés locales.
 \\
-\vspace*{1cm}
 Une plateforme web dédiée répond à plusieurs besoins essentiels : \begin{itemize}
 \item Sensibiliser les voyageurs aux pratiques responsables
 \item Centraliser les informations sur les destinations et activités écoresponsables
 \item Promouvoir les acteurs locaux
 \item  Faciliter la planification de séjours alignés avec des valeurs environnementales et éthiques.
 \end{itemize}
-\subsection*{Pourquoi le Maroc ?}
+\section{Pourquoi le Maroc ?}
 Le Maroc présente des atouts exceptionnels pour le développement du tourisme durable. Le pays offre une grande diversité de paysages, du Sahara aux montagnes de l'Atlas, en passant par les côtes atlantiques et méditerranéennes.\\ Son patrimoine culturel millénaire, ses traditions berbères et ses médinas classées à l'UNESCO constituent un héritage précieux à préserver.\\
-\vspace*{1cm}
 La biodiversité marocaine, riche en parcs nationaux et espèces endémiques, fait face à plusieurs menaces et nécessite une protection renforcée. Le tourisme responsable peut jouer un rôle essentiel dans cette préservation en valorisant les écosystèmes tout en soutenant les communautés locales. L'engagement du Maroc en faveur du développement durable, illustré par l'accueil de la COP22 et les récentes stratégies environnementales du pays, crée un contexte favorable pour encourager et développer ce type d'initiatives.\\
-\vspace*{1cm}
 Avec plus de 13 millions de visiteurs annuels et une demande croissante pour des expériences authentiques, le Maroc dispose d'un potentiel important pour développer un modèle touristique durable qui bénéficie aux communautés locales tout en préservant son patrimoine naturel et culturel.
 \end{document}
