@@ -1,0 +1,1131 @@
+
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{xcolor} % recommandé
+%\usepackage[symbols]{circuitikz}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{muStyleReport}
+\usepackage[french]{babel}
+\usepackage{mdframed}
+\usepackage{array}
+
+\usepackage{hyperref}                  % Liens hypertexte
+\usepackage{geometry}                  % Gestion des marges
+\geometry{margin=2cm}  
+\usepackage{titlesec}
+
+\usepackage{amsmath,amsfonts,amstext,amssymb,epsfig,bbm,wasysym}
+\usepackage{gensymb}
+%\usepackage{mathrsfs}
+%\usepackage{eufrak}
+%\usepackage{unicode-math}
+%\setmathfont{STIX Math}
+%\def\kay{\ensuremath{\mscrk}}
+
+\usepackage{graphicx}
+
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{multicol}  
+
+\definecolor{headerblue}{RGB}{41, 128, 185}
+\definecolor{rowgray}{RGB}{240, 240, 240}
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows,plotmarks}
+\usepackage{circuitikz}
+\usepackage{dirtree}
+%\usetikzlibrary{fandigs}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,calc,decorations.markings,decorations.pathreplacing}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{calc,patterns,shapes.geometric}
+\usetikzlibrary{trees, arrows.meta, shadows}
+
+\newcommand{\titreTP}[1]{%
+    \begin{tcolorbox}[colframe=black, colback=gray!10, width=\textwidth, sharp corners=south]
+        \centering
+        \LARGE \textbf{#1}
+    \end{tcolorbox}
+    \vspace{1cm} % Espacement après le titre
+}
+\newcommand{\definition}[2]{
+    \begin{tcolorbox}[colframe=black, colback=gray!10, title=\textbf{Définition : #1}]
+        #2
+    \end{tcolorbox}
+}
+
+   \usepackage{tcolorbox}
+%   \titleformat{\section}[block]
+%  {\normalfont\Large\bfseries\color{red}}  % Style (police, taille, couleur)
+%  {\thesection}{1em}{}
+%  \titleformat{\subsection}[block]
+%  {\normalfont\Large\bfseries\color{blue}}  % Style (police, taille, couleur)
+%  {\thesection}{1em}{}
+%   \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{1em}{}
+
+
+%\usepackage{tcolorbox}
+%\usepackage{color,colortbl}
+\begin{document}
+
+\chapter{Implémentation des fonctionnalités interactives en JavaScript}
+
+JavaScript est le langage de programmation qui permet de rendre un site web interactif et dynamique. Dans ce chapitre, nous présentons les fonctionnalités JavaScript que nous avons développées pour le site ÉcoTourisme Maroc. En tant que débutants en développement web, nous avons créé deux scripts principaux : \texttt{main.js} pour les interactions générales du site et \texttt{contact.js} pour la validation du formulaire de contact.
+
+\section{Introduction à JavaScript dans notre projet}
+
+JavaScript est un langage de programmation côté client qui s'exécute directement dans le navigateur de l'utilisateur. Il permet de :
+\begin{itemize}
+    \item Réagir aux actions de l'utilisateur (clics, survol, saisie)
+    \item Modifier dynamiquement le contenu des pages
+    \item Valider les formulaires avant envoi
+    \item Créer des animations et effets visuels
+    \item Améliorer l'expérience utilisateur globale
+\end{itemize}
+
+\subsection{Organisation des fichiers JavaScript}
+
+Notre projet contient deux fichiers JavaScript principaux dans le dossier \texttt{scripts/} :
+
+\begin{verbatim}
+scripts/
+├─ main.js          # Interactions générales du site
+└── contact.js       # Validation du formulaire de contact
+\end{verbatim}
+
+Ces fichiers sont chargés dans les pages HTML avec la balise \texttt{<script>} :
+
+\begin{verbatim}
+<script src="scripts/main.js"></script>
+<script src="scripts/contact.js"></script>
+\end{verbatim}
+
+% [IMAGE: Capture d'écran de la structure des dossiers du projet]
+
+\section{Script principal : main.js}
+
+Le fichier \texttt{main.js} contient toutes les fonctionnalités JavaScript communes à l'ensemble du site. Nous avons utilisé une technique appelée IIFE (Immediately Invoked Function Expression) pour encapsuler notre code et éviter les conflits avec d'autres scripts.
+
+\subsection{Structure globale du script}
+
+Notre script principal est organisé comme suit :
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=\textwidth]{js1.png}
+  \caption{main.js}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsection{Fonctions utilitaires}
+
+Nous avons créé deux fonctions utilitaires pour simplifier la sélection d'éléments HTML :
+
+\begin{lstlisting}[language=JavaScript, caption=Fonctions utilitaires de sélection]
+function qs(sel, el=document){ 
+  return el.querySelector(sel) 
+}
+
+function qsa(sel, el=document){ 
+  return Array.from(el.querySelectorAll(sel)) 
+}
+\end{lstlisting}
+
+\textbf{Explication :}
+\begin{itemize}
+    \item \texttt{qs} : Raccourci pour \texttt{querySelector} - sélectionne UN élément
+    \item \texttt{qsa} : Raccourci pour \texttt{querySelectorAll} - sélectionne TOUS les éléments correspondants
+    \item \texttt{el=document} : Paramètre par défaut, cherche dans tout le document si non spécifié
+    \item \texttt{Array.from()} : Convertit la liste d'éléments en tableau pour faciliter les manipulations
+\end{itemize}
+
+Ces fonctions nous permettent d'écrire du code plus court et lisible.
+
+% [IMAGE: Schéma expliquant querySelector vs querySelectorAll]
+
+\section{Menu de navigation mobile}
+
+L'une des fonctionnalités principales de notre site est le menu mobile responsive. Sur les petits écrans, le menu de navigation se transforme en menu hamburger.
+
+\subsection{Principe de fonctionnement}
+
+Le menu mobile fonctionne selon le principe suivant :
+\begin{enumerate}
+    \item Un bouton hamburger (trois barres) est visible sur mobile
+    \item Au clic sur ce bouton, le menu s'ouvre ou se ferme
+    \item L'utilisateur peut aussi fermer le menu en appuyant sur la touche Échap
+    \item L'attribut ARIA \texttt{aria-expanded} indique l'état ouvert/fermé pour l'accessibilité
+\end{enumerate}
+
+\subsection{Code du menu mobile}
+
+Voici le code complet que nous avons écrit :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=\textwidth]{js2.png}
+  \caption{main.js / initMobileNav()}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsection{Explication détaillée}
+
+\textbf{Étape 1 : Sélection des éléments}
+\begin{lstlisting}[language=JavaScript]
+const toggle = qs('.nav-toggle');
+const header = qs('header');
+\end{lstlisting}
+On récupère le bouton hamburger (classe \texttt{.nav-toggle}) et l'élément \texttt{<header>}.
+
+\textbf{Étape 2 : Vérification de l'existence}
+\begin{lstlisting}[language=JavaScript]
+if(!toggle || !header) return;
+\end{lstlisting}
+Si un élément n'existe pas sur la page, on arrête la fonction pour éviter les erreurs.
+
+\textbf{Étape 3 : Gestion du clic}
+\begin{lstlisting}[language=JavaScript]
+toggle.addEventListener('click', ()=>{ /* ... */ });
+\end{lstlisting}
+On écoute les clics sur le bouton hamburger.
+
+\textbf{Étape 4 : Lecture de l'état actuel}
+\begin{lstlisting}[language=JavaScript]
+const expanded = toggle.getAttribute('aria-expanded') === 'true';
+\end{lstlisting}
+On vérifie si le menu est déjà ouvert en lisant l'attribut \texttt{aria-expanded}.
+
+\textbf{Étape 5 : Inversion de l'état}
+\begin{lstlisting}[language=JavaScript]
+toggle.setAttribute('aria-expanded', String(!expanded));
+header.classList.toggle('nav-open');
+\end{lstlisting}
+On inverse l'état : si ouvert, on ferme ; si fermé, on ouvre.
+
+\textbf{Étape 6 : Fermeture au clavier}
+\begin{lstlisting}[language=JavaScript]
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape' && header.classList.contains('nav-open')){
+    // Fermer le menu
+  }
+});
+\end{lstlisting}
+On permet à l'utilisateur de fermer le menu en appuyant sur Échap.
+
+% [IMAGE: Capture d'écran du menu mobile ouvert et fermé]
+
+\subsection{Le CSS correspondant}
+
+Le JavaScript ajoute/retire simplement la classe \texttt{nav-open}. C'est le CSS qui gère l'apparence :
+
+\begin{verbatim}
+/* Menu cache par defaut sur mobile */
+header nav {
+  display: none;
+}
+
+/* Menu visible quand la classe nav-open est presente */
+header.nav-open nav {
+  display: block;
+}
+\end{verbatim}
+
+\section{Animation du slider d'images}
+
+Notre site possède un slider (carrousel) d'images qui défile automatiquement sur la page d'accueil. Nous avons ajouté une fonctionnalité pour mettre en pause l'animation quand l'utilisateur survole le slider avec sa souris.
+
+\subsection{Principe du slider}
+
+Le slider fonctionne ainsi :
+\begin{itemize}
+    \item Les images défilent automatiquement grâce à une animation CSS
+    \item Quand l'utilisateur survole le slider, l'animation se met en pause
+    \item Quand l'utilisateur enlève sa souris, l'animation reprend
+\end{itemize}
+
+\subsection{Code de la pause du slider}
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=\textwidth]{js3.png}
+  \caption{main.js / initSliderPause()}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsection{Explication du code}
+
+\begin{enumerate}
+    \item \textbf{Sélection} : On récupère le conteneur \texttt{.slider} et l'élément \texttt{.slide}
+    
+    \item \textbf{mouseenter} : Événement déclenché quand la souris entre dans la zone du slider
+    \begin{itemize}
+        \item On ajoute la classe \texttt{paused} qui arrête l'animation CSS
+    \end{itemize}
+    
+    \item \textbf{mouseleave} : Événement déclenché quand la souris sort de la zone
+    \begin{itemize}
+        \item On retire la classe \texttt{paused}, l'animation reprend
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Animation CSS correspondante}
+
+L'animation est définie en CSS :
+
+\begin{verbatim}
+.slide {
+  animation: slideAnimation 15s infinite;
+}
+
+.slide.paused {
+  animation-play-state: paused;
+}
+
+@keyframes slideAnimation {
+  0%, 100% { transform: translateX(0); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+}
+\end{verbatim}
+
+% [IMAGE: Illustration du slider avec images qui défilent]
+
+\section{Marquage du lien actif dans la navigation}
+
+Pour améliorer l'expérience utilisateur, nous avons créé une fonction qui met automatiquement en évidence le lien de navigation correspondant à la page actuelle.
+
+\subsection{Objectif}
+
+Si l'utilisateur est sur la page \texttt{destinations.html}, le lien "Destinations" dans le menu doit avoir un style différent (couleur, soulignement, etc.) pour indiquer qu'il s'agit de la page actuelle.
+
+\subsection{Code de marquage actif}
+
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=\textwidth]{js4.png}
+  \caption{main.js / markActiveNav()}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsection{Explication pas à pas}
+
+\textbf{1. Récupération du nom de la page :}
+\begin{lstlisting}[language=JavaScript]
+const path = location.pathname.split('/').pop() || 'index.html';
+\end{lstlisting}
+\begin{itemize}
+    \item \texttt{location.pathname} : Donne le chemin de l'URL actuelle
+    \item \texttt{split('/')} : Découpe le chemin en morceaux
+    \item \texttt{.pop()} : Prend le dernier morceau (le nom du fichier)
+    \item \texttt{|| 'index.html'} : Si vide, utilise 'index.html' par défaut
+\end{itemize}
+
+Exemple : Si l'URL est \texttt{https://site.com/pages/contact.html}, \texttt{path} vaudra \texttt{contact.html}
+
+\textbf{2. Parcours des liens :}
+\begin{lstlisting}[language=JavaScript]
+qsa('nav.main-nav a').forEach(a=>{ /* ... */ })
+\end{lstlisting}
+On sélectionne tous les liens (\texttt{<a>}) dans la navigation et on les parcourt un par un.
+
+\textbf{3. Comparaison et marquage :}
+\begin{lstlisting}[language=JavaScript]
+if(path === href || 
+   (href.endsWith('index.html') && path === '')){
+  a.classList.add('active');
+}
+\end{lstlisting}
+Si le \texttt{href} du lien correspond à la page actuelle, on ajoute la classe \texttt{active}.
+
+% [IMAGE: Menu de navigation avec lien actif mis en évidence]
+
+\section{Bouton de retour en haut de page}
+
+Pour améliorer la navigation sur les pages longues, nous avons créé un bouton "Retour en haut" qui apparaît automatiquement quand l'utilisateur descend dans la page.
+
+\subsection{Fonctionnement}
+
+\begin{itemize}
+    \item Le bouton est caché par défaut
+    \item Il apparaît quand l'utilisateur a scrollé plus de 200 pixels vers le bas
+    \item Au clic, la page remonte en haut avec une animation fluide
+    \item Le bouton disparaît quand l'utilisateur est en haut de page
+\end{itemize}
+
+\subsection{Code du bouton retour en haut}
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=\textwidth]{js5.png}
+  \caption{main.js / createBackToTop()}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsection{Explication détaillée}
+
+\textbf{Création du bouton :}
+\begin{lstlisting}[language=JavaScript]
+const btn = document.createElement('button');
+btn.className = 'back-to-top';
+btn.innerText = '\u2191';
+\end{lstlisting}
+On crée un nouvel élément \texttt{<button>} en JavaScript, on lui donne une classe CSS et on ajoute une flèche ↑.
+
+\textbf{Ajout à la page :}
+\begin{lstlisting}[language=JavaScript]
+document.body.appendChild(btn);
+\end{lstlisting}
+On insère le bouton à la fin du \texttt{<body>}.
+
+\textbf{Action au clic :}
+\begin{lstlisting}[language=JavaScript]
+btn.addEventListener('click', ()=> {
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+\end{lstlisting}
+Quand on clique, \texttt{window.scrollTo()} fait remonter la page en haut (\texttt{top:0}) avec une animation fluide (\texttt{behavior:'smooth'}).
+
+\textbf{Affichage conditionnel :}
+\begin{lstlisting}[language=JavaScript]
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 200) {
+    btn.style.display = 'block';
+  } else {
+    btn.style.display = 'none';
+  }
+})
+\end{lstlisting}
+On écoute l'événement \texttt{scroll}. Si \texttt{window.scrollY} (position de scroll verticale) dépasse 200 pixels, on affiche le bouton, sinon on le cache.
+
+% [IMAGE: Bouton retour en haut visible en bas à droite de la page]
+
+\section{Initialisation au chargement de la page}
+
+Toutes nos fonctions sont appelées quand la page est complètement chargée :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=0.7\textwidth]{js6.png}
+  \caption{}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\textbf{Pourquoi DOMContentLoaded ?}
+
+L'événement \texttt{DOMContentLoaded} est déclenché quand tout le HTML est chargé et que le DOM (Document Object Model) est prêt à être manipulé. C'est important car si on essaie de sélectionner des éléments avant qu'ils existent, le code ne fonctionnera pas.
+
+\section{Validation du formulaire de contact}
+
+Le deuxième fichier JavaScript \texttt{contact.js} gère entièrement la validation du formulaire de contact. C'est le script le plus complexe de notre projet car il vérifie de nombreux champs différents.
+
+\subsection{Structure du formulaire HTML}
+
+Notre formulaire de contact contient les champs suivants :
+
+\begin{verbatim}
+<form id="contactForm">
+  <input id="fullname" type="text" placeholder="Nom complet">
+  <input id="age" type="number" placeholder="Age">
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Mot de passe">
+  <input id="confirmPassword" type="password" 
+         placeholder="Confirmer le mot de passe">
+  <input id="fileInput" type="file">
+  <textarea id="message" maxlength="500" 
+            placeholder="Votre message"></textarea>
+  <button type="submit">Envoyer</button>
+</form>
+\end{verbatim}
+
+% [IMAGE: Capture d'écran du formulaire de contact]
+
+\subsection{Initialisation des variables}
+
+Au début du script, on sélectionne tous les éléments du formulaire :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=0.9\textwidth]{js7.png}
+  \caption{}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\textbf{Explication :}
+\begin{itemize}
+    \item On utilise \texttt{getElementById()} pour récupérer chaque champ par son ID
+    \item \texttt{allowedExt} : tableau des extensions de fichiers autorisées
+    \item Tout le code est dans un \texttt{DOMContentLoaded} pour s'assurer que les éléments existent
+\end{itemize}
+
+\subsection{Fonctions utilitaires d'affichage des erreurs}
+
+Nous avons créé des fonctions pour afficher et effacer les messages d'erreur :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=0.9\textwidth]{js8.png}
+  \caption{contact.js / fonctions d'erreurs}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\textbf{Comment ça marche :}
+\begin{itemize}
+    \item \texttt{setError()} : Affiche un message d'erreur sous un champ
+    \item \texttt{clearError()} : Efface le message d'erreur
+    \item \texttt{setStatus()} : Affiche un message global (succès ou erreur)
+    \item \texttt{clearStatus()} : Efface le message global
+\end{itemize}
+
+\subsection{Effacement automatique des erreurs}
+
+Pour améliorer l'expérience utilisateur, on efface les erreurs dès que l'utilisateur commence à corriger :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=0.9\textwidth]{js13.png}
+  \caption{contact.js / fonctions d'erreurs}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+On parcourt tous les champs et on ajoute un écouteur d'événement \texttt{input} qui efface l'erreur dès que l'utilisateur tape quelque chose.
+
+\subsection{Compteur de caractères pour le message}
+
+Le champ message est limité à 500 caractères. Nous affichons un compteur en temps réel :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=0.95\textwidth]{js12.png}
+  \caption{contact.js /  Compteur de caracteres}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\textbf{Fonctionnement :}
+\begin{enumerate}
+    \item On compte le nombre de caractères avec \texttt{message.value.length}
+    \item On affiche "X / 500"
+    \item Si on dépasse 500, on affiche un avertissement
+    \item Si on approche de 500 (entre 450 et 500), on ajoute une classe \texttt{warn} (couleur orange par exemple)
+    \item Si on dépasse vraiment, on coupe le texte avec \texttt{slice(0, 500)}
+\end{enumerate}
+
+% [IMAGE: Compteur de caractères affichant "245 / 500"]
+
+\subsection{Prévisualisation et validation du fichier}
+
+Quand l'utilisateur choisit un fichier, on vérifie qu'il est valide et on affiche un aperçu :
+
+ \begin{figure}[H] 
+  \centering
+  \includegraphics[width=\textwidth]{js11.png}
+  \caption{contact.js /Validation des fichiers}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\textbf{Explication étape par étape :}
+
+\begin{enumerate}
+    \item \textbf{Récupération du fichier} : \texttt{fileInput.files[0]} donne le premier fichier sélectionné
+    
+    \item \textbf{Extraction de l'extension} : 
+    \begin{itemize}
+        \item \texttt{name.split('.')} découpe le nom par les points
+        \item \texttt{.pop()} prend la dernière partie (l'extension)
+        \item \texttt{.toLowerCase()} convertit en minuscules
+    \end{itemize}
+    
+    \item \textbf{Vérification de l'extension} : On vérifie que l'extension est dans notre liste autorisée
+    
+    \item \textbf{Vérification de la taille} : 5 MB = 5 × 1024 × 1024 octets
+    
+    \item \textbf{Prévisualisation} :
+    \begin{itemize}
+        \item Pour les images : on crée un \texttt{<img>} et on utilise \texttt{FileReader} pour charger l'image
+        \item Pour les PDF : on affiche juste le nom du fichier
+    \end{itemize}
+\end{enumerate}
+
+% [IMAGE: Previsualisation d'une image uploadee dans le formulaire]
+
+\subsection{Validation de l'email}
+
+Nous avons créé une fonction pour vérifier que l'email est bien formaté :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=0.85\textwidth]{js10.png}
+  \caption{contact.js/ Validation d'email }
+  
+  \label{fig:structure_main}
+\end{figure}
+
+Cette fonction utilise une expression régulière (regex) pour vérifier le format :
+\begin{itemize}
+    \item \texttt{[\textbackslash w-.]+} : Au moins un caractère (lettre, chiffre, tiret, point)
+    \item \texttt{@} : Le symbole arobase obligatoire
+    \item \texttt{([\textbackslash w-]+\textbackslash .)+} : Nom de domaine avec au moins un point
+    \item \texttt{[\textbackslash w-]\{2,\}} : Extension de domaine (au moins 2 caractères)
+\end{itemize}
+
+Exemples valides : \texttt{user@example.com}, \texttt{prenom.nom@domaine.fr}
+
+Exemples invalides : \texttt{user@example}, \texttt{@example.com}, \texttt{user.example.com}
+
+\subsection{Validation complète au moment de la soumission}
+
+Quand l'utilisateur soumet le formulaire, on vérifie tous les champs :
+
+\begin{figure}[H] 
+  \centering
+  \includegraphics[width=1.01\textwidth]{js9.png}
+  \caption{contact.js/Validation Du Formulaire }
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\textbf{Logique de validation :}
+
+\begin{enumerate}
+    \item \texttt{ev.preventDefault()} : Empêche l'envoi automatique du formulaire
+    
+    \item Variable \texttt{valid} : On part du principe que tout est valide (\texttt{true}), et on passe à \texttt{false} dès qu'on trouve une erreur
+    
+    \item \textbf{Validation du nom} : Au moins 2 caractères après suppression des espaces (\texttt{trim()})
+    
+    \item \textbf{Validation de l'âge} : 
+    \begin{itemize}
+        \item \texttt{parseInt(age.value, 10)} : Convertit le texte en nombre entier
+        \item Vérifie que c'est un nombre valide et ≥ 18
+    \end{itemize}
+    
+    \item \textbf{Validation de l'email} : Utilise notre fonction \texttt{isEmail()}
+    
+    \item \textbf{Validation du mot de passe} : Au moins 6 caractères
+    
+    \item \textbf{Confirmation du mot de passe} : Doit être identique au premier
+    
+    \item \textbf{Validation du fichier} : Même vérifications que lors du changement
+    
+    \item \textbf{Affichage du résultat} :
+    \begin{itemize}
+        \item Si erreur : message d'erreur en rouge
+        \item Si succès : message de confirmation en vert
+        \item \texttt{form.reset()} : Vide tous les champs
+        \item \texttt{setTimeout()} : Efface le message après 5,5 secondes
+    \end{itemize}
+\end{enumerate}
+
+% [IMAGE: Formulaire avec messages de validation (erreurs et succes)]
+
+
+\subsection{Tests du menu mobile}
+
+\begin{enumerate}
+    \item Ouvrir le menu sur mobile → ✓ Fonctionne
+    \item Fermer avec la touche Échap → ✓ Fonctionne
+    \item Cliquer plusieurs fois sur le bouton → ✓ Ouvre/ferme correctement
+\end{enumerate}
+
+\subsection{Tests du formulaire}
+
+\begin{table}[h]
+\centering
+\caption{Tests de validation du formulaire}
+\begin{tabular}{|p{5cm}|p{5cm}|p{4cm}|}
+\hline
+\textbf{Test} & \textbf{Résultat attendu} & \textbf{Résultat obtenu} \\
+\hline
+Nom vide & Message d'erreur & ✓ OK \\
+\hline
+Âge < 18 & Message d'erreur & ✓ OK \\
+\hline
+Email sans @ & Message d'erreur & ✓ OK \\
+\hline
+Mots de passe différents & Message d'erreur & ✓ OK \\
+\hline
+Fichier .exe & Message d'erreur & ✓ OK \\
+\hline
+Fichier > 5MB & Message d'erreur & ✓ OK \\
+\hline
+Tout valide & Message de succès & ✓ OK \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Outils de débogage utilisés}
+
+\begin{itemize}
+    \item \textbf{Console du navigateur} : Pour afficher les erreurs JavaScript
+    \item \textbf{Inspecteur d'éléments} : Pour vérifier les classes CSS ajoutées/retirées
+    \item \textbf{Onglet Network} : Pour voir si les scripts se chargent correctement
+    \item \textbf{Tests sur différents navigateurs} : Chrome, Firefox ,Edje
+\end{itemize}
+
+% [IMAGE: Console de developpement du navigateur]
+
+\section{Conclusion du chapitre}
+
+Dans ce chapitre, nous avons détaillé l'implémentation de JavaScript dans notre projet ÉcoTourisme Maroc. Nous avons créé deux scripts principaux :
+
+\begin{itemize}
+    \item \textbf{main.js} : Gère les interactions générales (menu mobile, slider, navigation active, bouton retour en haut)
+    \item \textbf{contact.js} : Gère la validation complète du formulaire de contact avec vérification en temps réel
+\end{itemize}
+
+Ces fonctionnalités JavaScript améliorent considérablement l'expérience utilisateur en rendant le site plus interactif, plus réactif et plus agréable à utiliser. Bien que nous soyons débutants, nous avons réussi à implémenter des fonctionnalités importantes en suivant les bonnes pratiques du développement web moderne.
+
+Le chapitre suivant présentera le déploiement du site en ligne sur GitHub Pages.
+
+
+\chapter{Déploiement en ligne de la plateforme}
+
+Le déploiement d'un site web consiste à le rendre accessible au public via Internet. Dans ce chapitre, nous expliquons comment nous avons mis en ligne le site ÉcoTourisme Maroc en utilisant GitHub Pages, une solution d'hébergement gratuite et simple pour les sites statiques.
+
+\section{Qu'est-ce que le déploiement ?}
+
+Le déploiement est l'étape finale du développement web qui permet de :
+\begin{itemize}
+    \item Rendre le site accessible à tout le monde via une URL
+    \item Passer de l'environnement de développement (ordinateur local) à la production (serveur en ligne)
+    \item Permettre aux utilisateurs de visiter le site depuis n'importe où dans le monde
+\end{itemize}
+
+\subsection{Différence entre développement local et production}
+
+\begin{table}[h]
+\centering
+\caption{Développement local vs Production}
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline
+\textbf{Développement local} & \textbf{Production (en ligne)} \\
+\hline
+Fichiers sur votre ordinateur & Fichiers sur un serveur \\
+\hline
+Accessible uniquement par vous & Accessible par tout le monde \\
+\hline
+URL : localhost ou file:/// & URL : https://site.com \\
+\hline
+Modifications instantanées & Nécessite redéploiement \\
+\hline
+\end{tabular}
+\end{table}
+
+% [IMAGE: Schema montrant ordinateur local vs serveur en ligne]
+
+\section{Choix de GitHub Pages}
+
+Pour héberger notre site, nous avons choisi GitHub Pages, une solution gratuite proposée par GitHub.
+
+\subsection{Pourquoi GitHub Pages ?}
+
+\textbf{Avantages :}
+\begin{itemize}
+    \item \textbf{Gratuit} : Hébergement illimité sans frais
+    \item \textbf{Simple} : Déploiement automatique en quelques clics
+    \item \textbf{HTTPS gratuit} : Certificat SSL automatique pour sécuriser le site
+    \item \textbf{CDN intégré} : Le site se charge rapidement partout dans le monde
+    \item \textbf{Pas de publicité} : Contrairement aux hébergeurs gratuits classiques
+    \item \textbf{Intégration Git} : Mise à jour facile via Git
+\end{itemize}
+
+\textbf{Limitations :}
+\begin{itemize}
+    \item Uniquement pour les sites statiques (HTML, CSS, JavaScript)
+    \item Pas de base de données
+    \item Pas de PHP ou autres langages serveur
+\end{itemize}
+
+Pour notre projet (site vitrine statique), GitHub Pages est parfaitement adapté.
+
+\subsection{Alternatives considérées}
+
+Nous avons comparé plusieurs solutions :
+
+\begin{table}[h]
+\centering
+\caption{Comparaison des solutions d'hébergement}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Service} & \textbf{Prix} & \textbf{Complexité} \\
+\hline
+GitHub Pages & Gratuit & Facile \\
+\hline
+Netlify & Gratuit & Facile \\
+\hline
+Vercel & Gratuit & Moyenne \\
+\hline
+Hostinger & 2-10\euro/mois & Difficile \\
+\hline
+\end{tabular}
+\end{table}
+
+GitHub Pages a été retenu pour sa simplicité et son intégration native avec Git.
+
+\section{Étapes du déploiement}
+
+Le déploiement de notre site sur GitHub Pages s'est fait en plusieurs étapes simples.
+
+\subsection{Étape 1 : Création du dépôt GitHub}
+
+Nous avons créé un dépôt (repository) sur GitHub pour stocker notre code :
+
+\begin{enumerate}
+    \item Connexion à \texttt{github.com}
+    \item Clic sur "New repository"
+    \item Nom du dépôt : \texttt{ecotourismMaroc}
+    \item Visibilité : Public (obligatoire pour GitHub Pages gratuit)
+    \item Création du dépôt
+\end{enumerate}
+
+% [IMAGE: Capture d'ecran de la page de creation de depot GitHub]
+
+\subsection{Étape 2 : Initialisation de Git en local}
+
+Sur notre ordinateur, dans le dossier du projet :
+
+
+
+
+\textbf{Explication des commandes :}
+\begin{itemize}
+    \item \texttt{git init} : Initialise un nouveau dépôt Git
+    \item \texttt{git add .} : Ajoute tous les fichiers au suivi Git
+    \item \texttt{git commit -m "..."} : Enregistre les modifications avec un message
+    \item \texttt{git remote add origin ...} : Connecte le dépôt local à GitHub
+    \item \texttt{git push} : Envoie le code sur GitHub
+\end{itemize}
+
+% [IMAGE: Terminal montrant les commandes Git executees]
+
+\subsection{Étape 3 : Activation de GitHub Pages}
+
+Dans les paramètres du dépôt sur GitHub :
+
+\begin{enumerate}
+    \item Aller dans \texttt{Settings} (paramètres du dépôt)
+    \item Cliquer sur \texttt{Pages} dans le menu latéral
+    \item Dans "Source", sélectionner :
+    \begin{itemize}
+        \item Branch : \texttt{main}
+        \item Folder : \texttt{/ (root)}
+    \end{itemize}
+    \item Cliquer sur \texttt{Save}
+    \item Attendre 1-2 minutes
+\end{enumerate}
+
+GitHub Pages génère automatiquement le site à l'adresse :
+\begin{center}
+\texttt{https://mouad-arr.github.io/ecotourismMaroc/}
+\end{center}
+
+% [IMAGE: Parametres GitHub Pages avec la configuration]
+
+\subsection{Étape 4 : Vérification du déploiement}
+
+Après quelques minutes, nous avons :
+\begin{enumerate}
+    \item Ouvert l'URL du site dans le navigateur
+    \item Vérifié que toutes les pages s'affichent correctement
+    \item Testé les liens de navigation
+    \item Vérifié que les images se chargent
+    \item Testé le menu mobile
+    \item Vérifié le formulaire de contact
+\end{enumerate}
+
+\textbf{Résultat :} Le site est en ligne et accessible publiquement ! ✓
+
+% [IMAGE: Site web deploye visible dans le navigateur]
+
+\section{Mise à jour du site}
+
+Un des avantages de GitHub Pages est la facilité de mise à jour. Chaque fois que nous modifions le code et que nous le poussons sur GitHub, le site se met à jour automatiquement.
+
+\subsection{Processus de mise à jour}
+
+\begin{lstlisting}[language=bash, caption=Mise a jour du site]
+# 1. Faire des modifications dans le code
+
+# 2. Voir les fichiers modifies
+git status
+
+# 3. Ajouter les modifications
+git add .
+
+# 4. Commit avec un message descriptif
+git commit -m "Ajout: nouvelle destination Oasis du Sud"
+
+# 5. Envoyer sur GitHub
+git push origin main
+
+# 6. Attendre 1-2 minutes : le site se met a jour automatiquement
+\end{lstlisting}
+
+\textbf{Temps de déploiement :} Entre 30 secondes et 2 minutes après le push.
+
+\subsection{Exemple de mise à jour}
+
+Nous avons fait plusieurs mises à jour après le déploiement initial :
+\begin{itemize}
+    \item Correction de fautes d'orthographe
+    \item Ajout de nouvelles images
+    \item Amélioration du formulaire de contact
+    \item Optimisation du menu mobile
+\end{itemize}
+
+Chaque mise à jour a suivi le même processus simple : modifier → commit → push.
+
+\section{Sécurité : HTTPS automatique}
+
+GitHub Pages active automatiquement HTTPS (protocole sécurisé) pour notre site. C'est très important pour plusieurs raisons :
+
+\subsection{Qu'est-ce que HTTPS ?}
+
+HTTPS (HyperText Transfer Protocol Secure) est la version sécurisée du HTTP. Il utilise le chiffrement SSL/TLS pour protéger les données.
+
+\textbf{Avantages de HTTPS :}
+\begin{itemize}
+    \item \textbf{Sécurité} : Les données échangées sont chiffrées
+    \item \textbf{Confiance} : Les navigateurs affichent un cadenas vert
+    \item \textbf{SEO} : Google favorise les sites HTTPS dans les résultats de recherche
+    \item \textbf{Moderne} : Standard actuel du web
+\end{itemize}
+
+% [IMAGE: Barre d'adresse du navigateur montrant le cadenas HTTPS]
+
+\subsection{Configuration automatique}
+
+Avec GitHub Pages :
+\begin{enumerate}
+    \item Le certificat SSL est généré automatiquement
+    \item Il se renouvelle automatiquement
+    \item Aucune configuration manuelle nécessaire
+    \item C'est totalement gratuit
+\end{enumerate}
+
+Il suffit de cocher "Enforce HTTPS" dans les paramètres GitHub Pages (déjà activé par défaut).
+
+
+\subsection{Vérification du code}
+
+Nous avons vérifié que notre code HTML et CSS est correct :
+
+\begin{itemize}
+    \item \textbf{HTML} : Validation avec le W3C Validator (\texttt{validator.w3.org})
+    \item \textbf{CSS} : Validation avec le CSS Validator
+    \item \textbf{JavaScript} : Vérification des erreurs dans la console du navigateur
+\end{itemize}
+
+Toutes les erreurs détectées ont été corrigées avant le déploiement final.
+
+\subsection{Tests responsive}
+
+Nous avons testé l'affichage du site sur différentes tailles d'écran :
+\begin{itemize}
+    \item Mobile (320px - 480px)
+    \item Tablette (768px - 1024px)
+    \item Desktop (> 1200px)
+\end{itemize}
+
+Tous les tests étaient positifs : le site s'affiche correctement partout.
+
+\section{Conclusion du chapitre}
+
+Le déploiement de notre site ÉcoTourisme Maroc sur GitHub Pages s'est déroulé avec succès. Nous avons réussi à :
+
+\begin{itemize}
+    \item Mettre le site en ligne gratuitement
+    \item Obtenir une URL publique et un certificat HTTPS
+    \item Établir un processus simple pour les mises à jour futures
+    \item Optimiser le site pour de bonnes performances
+\end{itemize}
+
+Le site est maintenant accessible à l'adresse \texttt{https://mouad-arr.github.io/ecotourismMaroc/} et peut être consulté par n'importe qui dans le monde.
+
+Cette expérience de déploiement nous a permis de comprendre :
+\begin{itemize}
+    \item Le fonctionnement de Git et GitHub
+    \item La différence entre développement local et production
+    \item L'importance de l'optimisation pour le web
+    \item Le processus complet de mise en ligne d'un site web
+\end{itemize}
+
+\chapter*{Conclusion générale}
+\addcontentsline{toc}{chapter}{Conclusion générale}
+
+Le projet ÉcoTourisme Maroc nous a permis de découvrir et de pratiquer les technologies fondamentales du développement web moderne : HTML5, CSS3 et JavaScript. À travers ce projet, nous avons créé un site web complet, du code initial au déploiement en ligne.
+
+\section*{Objectifs atteints}
+
+Nous avons réussi à créer un site web fonctionnel qui répond aux objectifs fixés :
+
+\begin{itemize}
+    \item \textbf{Site responsive} : Le site s'adapte correctement aux mobiles, tablettes et ordinateurs
+    \item \textbf{Navigation intuitive} : Menu clair avec des liens fonctionnels vers toutes les pages
+    \item \textbf{Design attractif} : Interface moderne avec des couleurs cohérentes et des images de qualité
+    \item \textbf{Interactivité JavaScript} : Menu mobile, slider, formulaire validé, bouton retour en haut
+    \item \textbf{Déploiement réussi} : Site en ligne et accessible publiquement
+\end{itemize}
+
+\section*{Compétences acquises}
+
+Ce projet nous a permis d'apprendre et de pratiquer de nombreuses compétences techniques :
+
+\subsection*{HTML}
+\begin{itemize}
+    \item Structure sémantique des pages
+    \item Formulaires et validation
+    \item Organisation du contenu
+    \item Balises meta et SEO de base
+\end{itemize}
+
+\subsection*{CSS}
+\begin{itemize}
+    \item Flexbox et CSS Grid pour les layouts
+    \item Media Queries pour le responsive design
+    \item Animations et transitions
+    \item Variables CSS pour la cohérence
+    \item Gestion des couleurs et typographie
+\end{itemize}
+
+\subsection*{JavaScript}
+\begin{itemize}
+    \item Manipulation du DOM
+    \item Gestion des événements
+    \item Validation de formulaires
+    \item Création de fonctionnalités interactives
+    \item Bonnes pratiques de code
+\end{itemize}
+
+\subsection*{Git et déploiement}
+\begin{itemize}
+    \item Versioning du code avec Git
+    \item Utilisation de GitHub
+    \item Déploiement avec GitHub Pages
+    \item Workflow de mise à jour
+\end{itemize}
+
+\section*{Difficultés rencontrées et solutions}
+
+En tant que débutants, nous avons rencontré plusieurs défis :
+
+\subsection*{Responsive Design}
+\textbf{Difficulté :} Adapter le site aux différentes tailles d'écran
+
+\textbf{Solution :} Utilisation de Flexbox, CSS Grid et Media Queries après étude de tutoriels et exemples
+
+\subsection*{JavaScript}
+\textbf{Difficulté :} Comprendre la logique de programmation et la manipulation du DOM
+
+\textbf{Solution :} Découpage en petites fonctions, tests fréquents dans la console, documentation MDN
+
+\subsection*{Git}
+\textbf{Difficulté :} Comprendre les concepts de commit, push, branches
+
+\textbf{Solution :} Apprentissage progressif des commandes de base, aide du professeur
+
+\section*{Points forts du projet}
+
+\begin{itemize}
+    \item \textbf{Fonctionnalité complète} : Le site contient toutes les pages prévues et toutes les fonctionnalités fonctionnent
+    \item \textbf{Design cohérent} : Charte graphique respectée sur toutes les pages
+    \item \textbf{Accessibilité} : Navigation au clavier, attributs ARIA, messages d'erreur clairs
+    \item \textbf{Performance} : Images optimisées, code validé
+    \item \textbf{En ligne} : Site déployé et accessible publiquement
+\end{itemize}
+
+\section*{Améliorations futures possibles}
+
+Si nous devions continuer à développer ce site, nous pourrions ajouter :
+
+\subsection*{Court terme}
+\begin{itemize}
+    \item Plus de destinations et d'activités
+    \item Galerie photos avec lightbox
+    \item Système de recherche de destinations
+    \item Blog avec articles sur l'écotourisme
+    \item Page FAQ (questions fréquentes)
+\end{itemize}
+
+\subsection*{Moyen terme}
+\begin{itemize}
+    \item Backend avec base de données
+    \item Système de réservation en ligne
+    \item Comptes utilisateurs
+    \item Système de commentaires et avis
+    \item Newsletter
+\end{itemize}
+
+\subsection*{Long terme}
+\begin{itemize}
+    \item Application mobile
+    \item Carte interactive avec géolocalisation
+    \item Système de recommandations personnalisées
+    \item Partenariats avec éco-lodges
+    \item Intégration de paiement en ligne
+\end{itemize}
+
+\section*{Impact du projet}
+
+Au-delà de l'apprentissage technique, ce projet a un objectif de sensibilisation au tourisme durable au Maroc. Notre site vise à :
+
+\begin{itemize}
+    \item Promouvoir les destinations naturelles marocaines
+    \item Encourager des pratiques de voyage responsables
+    \item Valoriser le patrimoine culturel et environnemental
+    \item Soutenir les communautés locales
+\end{itemize}
+
+\section*{Remerciements}
+
+Nous tenons à remercier :
+
+\begin{itemize}
+    \item Le Professeur Qazdar Aimad pour son encadrement et ses conseils
+    \item L'ENSA pour la formation en technologies web
+    \item Nos camarades pour les échanges et l'entraide
+\end{itemize}
+
+\section*{Conclusion finale}
+
+Ce projet a été une expérience d'apprentissage très enrichissante. Partir d'une page blanche et arriver à un site web complet et déployé en ligne nous a donné confiance en nos capacités de développement web.
+
+Nous avons découvert que créer un site web demande de la rigueur, de la patience et de la créativité. Chaque problème rencontré nous a appris quelque chose de nouveau. Le résultat final, bien qu'il soit celui de débutants, est fonctionnel et nous en sommes fiers.
+
+Cette expérience nous a donné envie de continuer à apprendre le développement web et à améliorer nos compétences. Le site ÉcoTourisme Maroc est maintenant en ligne à l'adresse :
+
+\begin{center}
+\texttt{https://mouad-arr.github.io/ecotourismMaroc/}
+\end{center}
+
+C'est le début d'une aventure dans le monde du développement web, et nous sommes motivés pour continuer à apprendre et à créer.
+
+\vspace{1cm}
+
+\begin{flushright}
+\textit{Mouad Ouchelh, Youssef Afella, Achraf Boulhem}\\
+\textit{Février 2025}
+\end{flushright}
+
+
+
+\end{document}
