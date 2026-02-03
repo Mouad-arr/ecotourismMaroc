@@ -1,17 +1,77 @@
 \documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
 
-
+%\usepackage[symbols]{circuitikz}
+\usepackage{amssymb}
+\usepackage{array}
 \usepackage{muStyleReport}
-\usepackage{setspace}
 \usepackage[french]{babel}
 \usepackage{mdframed}
-% Définir l'espacement
-\setstretch{1.3}
+\usepackage{array}
+
+\usepackage{hyperref}                  % Liens hypertexte
+\usepackage{geometry}                  % Gestion des marges
+\geometry{margin=2cm}  
+\usepackage{titlesec}
+
+\usepackage{amsmath,amsfonts,amstext,amssymb,epsfig,bbm,wasysym}
+\usepackage{gensymb}
+%\usepackage{mathrsfs}
+%\usepackage{eufrak}
+%\usepackage{unicode-math}
+%\setmathfont{STIX Math}
+%\def\kay{\ensuremath{\mscrk}}
+
+\usepackage{graphicx}
+
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{multicol}  
+
+\definecolor{headerblue}{RGB}{41, 128, 185}
+\definecolor{rowgray}{RGB}{240, 240, 240}
 
 
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows,plotmarks}
+\usepackage{circuitikz}
+\usepackage{dirtree}
+%\usetikzlibrary{fandigs}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,calc,decorations.markings,decorations.pathreplacing}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{calc,patterns,shapes.geometric}
+\usetikzlibrary{trees, arrows.meta, shadows}
 
-\usepackage{tcolorbox}
+\newcommand{\titreTP}[1]{%
+    \begin{tcolorbox}[colframe=black, colback=gray!10, width=\textwidth, sharp corners=south]
+        \centering
+        \LARGE \textbf{#1}
+    \end{tcolorbox}
+    \vspace{1cm} % Espacement après le titre
+}
+\newcommand{\definition}[2]{
+    \begin{tcolorbox}[colframe=black, colback=gray!10, title=\textbf{Définition : #1}]
+        #2
+    \end{tcolorbox}
+}
 
+   \usepackage{tcolorbox}
+%   \titleformat{\section}[block]
+%  {\normalfont\Large\bfseries\color{red}}  % Style (police, taille, couleur)
+%  {\thesection}{1em}{}
+%  \titleformat{\subsection}[block]
+%  {\normalfont\Large\bfseries\color{blue}}  % Style (police, taille, couleur)
+%  {\thesection}{1em}{}
+%   \titleformat{\chapter}[hang]{\bfseries\huge}{\thechapter.}{1em}{}
+
+
+%\usepackage{tcolorbox}
+%\usepackage{color,colortbl}
 \begin{document}
 % --- Page de garde ---
 \begin{titlepage}
@@ -77,18 +137,1014 @@ Le tourisme figure parmi les secteurs clés de l'économie marocaine. Face aux m
 \section{Périmètre}
 Le site développé est un site statique (HTML/CSS/JS) hébergé sur GitHub Pages. Il ne comprend pas, dans sa version initiale, de back‑office ni de base de données. Le périmètre couvre : la page d'accueil, pages destinations, activités, blog/conseils, et page contact.
 
-\chapter{Présentation du projet}
-\section{Pourquoi un site de tourisme durable ?}
+\section{Présentation du projet}
+\subsection{Pourquoi un site de tourisme durable ?}
 Le tourisme de masse génère des impacts environnementaux et sociaux considérables : dégradation des écosystèmes, forte empreinte carbone, pression sur les ressources locales et perte d'authenticité culturelle. Face à ces défis, le tourisme durable s'impose comme une alternative nécessaire, visant à minimiser ces impacts tout en valorisant les communautés locales.
-\\
-Une plateforme web dédiée répond à plusieurs besoins essentiels : \begin{itemize}
+
+
+
+Une plateforme web dédiée répond à plusieurs besoins essentiels : 
+\begin{itemize}
 \item Sensibiliser les voyageurs aux pratiques responsables
 \item Centraliser les informations sur les destinations et activités écoresponsables
 \item Promouvoir les acteurs locaux
 \item  Faciliter la planification de séjours alignés avec des valeurs environnementales et éthiques.
 \end{itemize}
-\section{Pourquoi le Maroc ?}
-Le Maroc présente des atouts exceptionnels pour le développement du tourisme durable. Le pays offre une grande diversité de paysages, du Sahara aux montagnes de l'Atlas, en passant par les côtes atlantiques et méditerranéennes.\\ Son patrimoine culturel millénaire, ses traditions berbères et ses médinas classées à l'UNESCO constituent un héritage précieux à préserver.\\
-La biodiversité marocaine, riche en parcs nationaux et espèces endémiques, fait face à plusieurs menaces et nécessite une protection renforcée. Le tourisme responsable peut jouer un rôle essentiel dans cette préservation en valorisant les écosystèmes tout en soutenant les communautés locales. L'engagement du Maroc en faveur du développement durable, illustré par l'accueil de la COP22 et les récentes stratégies environnementales du pays, crée un contexte favorable pour encourager et développer ce type d'initiatives.\\
+\subsection{Pourquoi le Maroc ?}
+Le Maroc présente des atouts exceptionnels pour le développement du tourisme durable. Le pays offre une grande diversité de paysages, du Sahara aux montagnes de l'Atlas, en passant par les côtes atlantiques et méditerranéennes.\\ Son patrimoine culturel millénaire, ses traditions berbères et ses médinas classées à l'UNESCO constituent un héritage précieux à préserver.
+
+
+La biodiversité marocaine, riche en parcs nationaux et espèces endémiques, fait face à plusieurs menaces et nécessite une protection renforcée. Le tourisme responsable peut jouer un rôle essentiel dans cette préservation en valorisant les écosystèmes tout en soutenant les communautés locales. L'engagement du Maroc en faveur du développement durable, illustré par l'accueil de la COP22 et les récentes stratégies environnementales du pays, crée un contexte favorable pour encourager et développer ce type d'initiatives.
+
+
 Avec plus de 13 millions de visiteurs annuels et une demande croissante pour des expériences authentiques, le Maroc dispose d'un potentiel important pour développer un modèle touristique durable qui bénéficie aux communautés locales tout en préservant son patrimoine naturel et culturel.
+\section{Problématique}
+Malgré la richesse naturelle et culturelle du Maroc, les informations relatives au tourisme durable restent dispersées et peu accessibles au grand public. Les voyageurs manquent souvent de repères clairs pour organiser des séjours respectueux de l’environnement et des communautés locales. Ce projet vise donc à répondre à ce manque à travers une plateforme web dédiée à l'écotourisme marocain.
+\chapter{Analyse des besoins}
+
+\chapter{Conception de l'architecture}
+
+\chapter{Développement des pages en HTML }
+Le développement des pages HTML du site ÉcoTourisme Maroc a été réalisé selon une approche progressive et structurée, s'appuyant sur les principes du développement web moderne et les standards internationaux du W3C (World Wide Web Consortium). Cette méthodologie consiste à concevoir d'abord la structure sémantique des pages avant d'intégrer les styles CSS et les interactions JavaScript, en respectant le principe de séparation des préoccupations. L'objectif principal est d'obtenir un site web clair, accessible à tous les utilisateurs, facilement maintenable par les développeurs, et compatible avec l'ensemble des navigateurs modernes et supports (ordinateurs, tablettes, smartphones).
+
+Cette approche itérative nous a permis de valider progressivement chaque composant avant d'ajouter des couches de complexité supplémentaires, garantissant ainsi la robustesse et la qualité du produit final.
+
+\section{Choix des technologies}
+Le projet repose sur un ensemble de technologies web standards, soigneusement sélectionnées pour assurer une large compatibilité, une facilité de déploiement et une pérennité du site.
+
+
+
+\subsection{HTML5 - Structure sémantique}
+
+Le langage HTML5 a été choisi comme base structurelle du site pour plusieurs raisons fondamentales :
+
+\begin{itemize}
+    \item \textbf{Sémantique enrichie :} HTML5 introduit des balises sémantiques (header, nav, main, section, article, aside, footer) qui donnent du sens au contenu et améliorent significativement le référencement naturel (SEO) ainsi que l'accessibilité pour les technologies d'assistance.
+    
+    \item \textbf{Compatibilité universelle :} Supporté par tous les navigateurs modernes (Chrome, Firefox, Safari, Edge) sans nécessiter de polyfills ou de bibliothèques supplémentaires.
+    
+    \item \textbf{Validation stricte :} Possibilité de valider le code selon les standards du W3C, garantissant une qualité et une conformité du code produit.
+    
+    \item \textbf{Multimédia natif :} Support intégré des éléments audio et vidéo sans dépendance à des plugins externes (comme Flash, désormais obsolète).
+    
+    \item \textbf{Formulaires avancés :} Nouveaux types d'inputs (email, tel, date, number) avec validation native côté navigateur.
+\end{itemize}
+
+% [FIGURE X.1 : Schéma des balises HTML5 sémantiques utilisées dans le projet]
+% Suggestion : Créer un diagramme montrant la structure header > nav, main > section/article, footer
+\tikzset{
+  basicTag/.style={
+    rectangle,
+    rounded corners=3pt,
+    draw=blue!40!black,
+    very thick,
+    minimum width=2.5cm,
+    minimum height=1.2cm,
+    align=center,
+    font=\ttfamily\bfseries, 
+    drop shadow,
+  },
+  containerTag/.style={
+    basicTag,
+    top color=orange!10,
+    bottom color=orange!30,
+  },
+  innerTag/.style={
+    basicTag,
+    top color=green!10,
+    bottom color=green!30,
+    minimum width=2cm,
+    font=\ttfamily\small
+  },
+  rootTag/.style={
+    basicTag,
+    top color=gray!10,
+    bottom color=gray!30,
+    minimum width=3cm
+  },
+  connecteur/.style={
+    draw=blue!50!black,
+    thick,
+    -{Latex[length=3mm]}, 
+    rounded corners=5pt
+  }
+}
+
+\begin{tikzpicture}[
+  level 1/.style={sibling distance=4.5cm, level distance=2.5cm},
+  level 2/.style={sibling distance=2.5cm, level distance=2.5cm},
+  edge from parent/.style={connecteur}, % Applique le style de flèche
+  edge from parent path={(\tikzparentnode.south) -- ++(0,-0.5cm) -| (\tikzchildnode.north)} % Connecteurs à angle droit
+]
+
+\node[rootTag] {<body>}
+  child { node[containerTag] {<header>}
+    child { node[innerTag] {<nav>} }
+  }
+  child { node[containerTag] {<main>}
+    child { node[innerTag] {<section>} }
+    child { node[innerTag] {<article>} }
+  }
+  child { node[containerTag] {<footer>} };
+
+
+\node[above=1cm, font=\bfseries\Large] at (current bounding box.north) {Structure Sémantique HTML5};
+
+\end{tikzpicture}
+
+
+\section{Organisation des fichiers et dossiers} 
+L'architecture du projet suit une organisation modulaire et scalable, inspirée des meilleures pratiques de développement web. Cette structure facilite la navigation dans le code, la maintenance, et permet une collaboration efficace entre développeurs. 
+
+
+\subsection{Arborescence complète du projet}
+
+ \dirtree{%
+.1 /eco-tourisme-maroc.
+.2 index.html.
+.2 destinations.html.
+.2 apropos.html.
+.2 Activite.html.
+.2 consielsBlog.html.
+.2 contact.html.
+.2 article-responsable.html.
+.2 article-ecolodges.html.
+.2 hautAtalas.html.
+.2 littoral.html.
+.2 oasis\&dunes.html. % Notez le \ devant le &
+.2 soutenirLesProjets.html.
+.2 css/.
+.3 AccueilStyle.css.
+.3 ActiviteStyle.css.
+.3 AproposStyle.css.
+.3 base.css.
+.3 BlogStyle.css.
+.3 DestinationSty.css.
+.3 navFooterSty.css.
+.2 js/.
+.3 contact.js.
+.3 main.js.
+.2 images/.
+}
+ 
+\subsection{Justification de l'organisation modulaire}
+
+Cette structure présente plusieurs avantages majeurs pour le développement et la maintenance du projet :
+
+\textbf{Séparation des préoccupations :}
+Chaque type de ressource (HTML, CSS, JavaScript, images) est regroupé dans son propre dossier dédié, facilitant la localisation rapide des fichiers et évitant les conflits de nommage.
+
+\textbf{Modularité CSS :}
+Les feuilles de style sont divisées par fonctionnalité et par page :
+\begin{itemize}
+    \item \texttt{base.css} : Contient le reset CSS, les variables globales, et les styles réutilisables
+    \item \texttt{navFooterSty.css} : Composants communs à toutes les pages (en-tête, navigation, pied de page)
+    \item Fichiers spécifiques par page : Permettent de charger uniquement les styles nécessaires
+\end{itemize}
+
+\textbf{Maintenabilité accrue :}
+Les modifications d'un composant spécifique (par exemple, le style des cartes de destinations) peuvent être effectuées dans un fichier dédié sans risque d'effets de bord sur d'autres parties du site.
+
+\textbf{Performance optimisée :}
+La séparation des styles permet de ne charger que les ressources nécessaires pour chaque page, réduisant ainsi le temps de chargement initial.
+
+\textbf{Scalabilité :}
+L'ajout de nouvelles pages ou fonctionnalités suit simplement la convention de nommage établie, facilitant l'évolution future du site.
+
+\textbf{Collaboration facilitée :}
+Plusieurs développeurs peuvent travailler simultanément sur différentes parties du site (HTML, CSS, JS) sans conflits majeurs dans le système de contrôle de version Git.
+
+Le tableau \ref{tab:fichiers_pages} présente la correspondance entre les pages HTML et leurs feuilles de style associées.
+
+\begin{table}[h]
+\centering
+\caption{Pages HTML et leurs ressources CSS/JS associées}
+\label{tab:fichiers_pages}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Page HTML} & \textbf{CSS spécifique} & \textbf{JS spécifique} \\
+\hline
+index.html & AccueilStyle.css & main.js \\
+destinations.html & DestinationSty.css & main.js \\
+Activite.html & ActiviteStyle.css & main.js \\
+apropos.html & AproposStyle.css & main.js \\
+consielsBlog.html & BlogStyle.css & main.js \\
+contact.html & - & contact.js + main.js \\
+hautAtalas.html & DestinationSty.css & main.js \\
+littoral.html & DestinationSty.css & main.js \\
+oasis\&dunes.html & DestinationSty.css & main.js \\
+\hline
+\multicolumn{3}{|l|}{\textit{Note : base.css et navFooterSty.css sont chargés sur toutes les pages}} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{Développement de la structure HTML}
+\subsubsection{Structure type d'une page}
+
+Chaque page du site respecte la structure HTML5 suivante :
+
+\begin{itemize}
+    \item \texttt{<!DOCTYPE html>} : Déclaration du type de document HTML5
+    \item \texttt{<html lang="fr">} : Élément racine avec indication de la langue française
+    \item \texttt{<head>} : Métadonnées de la page (titre, description, styles, scripts)
+    \item \texttt{<body>} : Contenu visible de la page, structuré ainsi :
+    \begin{itemize}
+        \item \texttt{<header>} : En-tête global du site (logo, navigation principale)
+        \item \texttt{<main>} : Contenu principal unique de la page
+        \item \texttt{<footer>} : Pied de page global (liens, informations de contact)
+    \end{itemize}
+\end{itemize}
+Comme nous pouvons le voir sur la figure \ref{fig:structure_main}
+ \begin{figure}[h!] 
+  \centering
+  \includegraphics[width=\textwidth]{exemple.png}
+  
+
+  \caption{Structure sémantique du code de la page principale}
+  
+  \label{fig:structure_main}
+\end{figure}
+\subsubsection{Balises sémantiques utilisées}
+
+Le tableau \ref{tab:balises_semantiques} liste les principales balises sémantiques HTML5 utilisées dans le projet et leur rôle spécifique.
+
+\begin{table}[h]
+\centering
+\caption{Balises HTML5 sémantiques utilisées}
+\label{tab:balises_semantiques}
+\begin{tabular}{|c|p{10cm}|}
+\hline
+\textbf{Balise} & \textbf{Utilisation dans le projet} \\
+\hline
+\texttt{<header>} & En-tête global du site contenant le logo et la navigation principale \\
+\hline
+\texttt{<nav>} & Menu de navigation (principal et secondaire) \\
+\hline
+\texttt{<main>} & Contenu principal unique de chaque page (une seule balise main par page) \\
+\hline
+\texttt{<section>}  & Regroupement thématique de contenu (ex: section destinations, section témoignages) \\
+\hline
+\texttt{<article>} & Contenu autonome réutilisable (ex: carte de destination, article de blog) \\
+\hline
+\texttt{<aside>} & Contenu complémentaire (ex: barre latérale avec conseils) \\
+\hline
+\texttt{<footer>} & Pied de page global avec liens utiles et informations légales \\
+\hline
+\texttt{<figure>} & Images avec légendes descriptives \\
+\hline
+\texttt{<figcaption>} & Légende associée à une image ou illustration \\
+\hline
+\end{tabular}
+\end{table}
+\section{Développement des pages principales}
+Chaque page du site a été développée avec une attention particulière portée à son objectif spécifique, son public cible et l'expérience utilisateur qu'elle doit offrir. Cette section détaille la conception et le contenu des pages majeures du site.
+\subsection{Page d'accueil (index.html)}
+
+La page d'accueil constitue la vitrine du projet ÉcoTourisme Maroc. Elle présente immédiatement la philosophie du site à travers son slogan "Explorer • Respecter • Préserver" et offre une introduction visuelle aux richesses naturelles du Maroc.
+
+\subsubsection{Objectifs de la page}
+
+\begin{itemize}
+    \item Communiquer immédiatement les valeurs du projet : exploration, respect et préservation
+    \item Présenter visuellement la beauté naturelle du Maroc à travers des images immersives
+    \item Orienter les visiteurs vers les destinations disponibles
+    \item Créer une connexion émotionnelle avec les visiteurs à travers un message fort sur le tourisme responsable
+\end{itemize}
+
+\subsubsection{Structure et contenu réel de la page}
+
+La page d'accueil adopte une structure minimaliste et impactante :
+
+\textbf{1. En-tête et navigation :}
+\begin{itemize}
+    \item Logo et titre "ÉcoTourisme Maroc"
+    \item Slogan principal : "Explorer • Respecter • Préserver"
+    \item Menu de navigation horizontal avec 6 liens principaux :
+    \begin{itemize}
+        \item Accueil
+        \item Destinations
+        \item Activités
+        \item Blog
+        \item À propos
+        \item Contact
+    \end{itemize}
+\end{itemize}
+
+\textbf{2. Section Hero avec carrousel d'images :}
+\begin{itemize}
+    \item Carrousel automatique de 3 images panoramiques :
+    \begin{itemize}
+        \item nature1.jpg - Premier paysage naturel du Maroc
+        \item nature7.jpg - Deuxième vue panoramique
+        \item nature6.jpg - Troisième paysage écologique
+    \end{itemize}
+    \item Les images défilent automatiquement pour créer un effet immersif
+    \item Texte alternatif descriptif : "Paysage écologique du Maroc"
+\end{itemize}
+
+\textbf{3. Section message principal :}
+\begin{itemize}
+    \item Titre accrocheur (h2) : "Explorez le Maroc autrement — entre nature, culture et respect."
+    \item Paragraphe descriptif : "Découvrez un Maroc authentique où nature, traditions et cultures se rencontrent. Partez à l'aventure à travers des paysages uniques et des expériences locales conçues dans le respect de l'environnement et des communautés."
+    \item Bouton d'appel à l'action : "Découvrir nos destinations" (lien vers destinations.html)
+\end{itemize}
+
+\textbf{4. Pied de page (Footer) :}
+\begin{itemize}
+    \item Copyright : "© 2025 ÉcoTourisme Maroc — Tous droits réservés."
+    \item Lien rapide vers la page Contact
+\end{itemize}
+
+\subsubsection{Caractéristiques techniques}
+
+\begin{itemize}
+    \item \textbf{Carrousel d'images :} Implémenté en JavaScript pour une transition fluide et automatique entre les 3 images du dossier \texttt{images/}
+    \item \textbf{Design minimaliste :} Focalisation sur le visuel et le message sans surcharge d'informations
+    \item \textbf{Hiérarchie claire :} Le message principal guide naturellement vers l'action (découvrir les destinations)
+    \item \textbf{Responsive design :} Adaptation automatique du carrousel et du texte pour tous les appareils
+\end{itemize}
+
+ \begin{figure}[h!] 
+  \centering
+  \includegraphics[width=\textwidth]{home-page.png}
+  
+
+  \caption{Capture d'écran de la page d'accueil}
+  
+  \label{fig:structure_main}
+\end{figure}
+\subsection{Page Destinations (destinations.html)}
+Point d'entrée principal vers les offres touristiques, cette page sert de carrefour de navigation.
+\begin{itemize}
+    \item \textbf{Objectif :} Présenter et comparer les trois écosystèmes (Montagne, Mer, Désert).
+    \item \textbf{Structure :} Une grille de cartes ("Cards") comprenant pour chaque destination : une image représentative, un descriptif court et un lien vers la page détaillée.
+\end{itemize}
+
+\subsection{Pages de Détails par Destination}
+Trois pages distinctes (\texttt{hautAtalas.html}, \texttt{littoral.html}, \texttt{oasis\&dunes.html}) suivent un gabarit commun pour assurer une cohérence visuelle et ergonomique :
+\begin{enumerate}
+    \item \textbf{En-tête immersif :} Image panoramique et introduction.
+    \item \textbf{Contenu :} Présentation de la région, galerie photos et aspects écologiques.
+    \item \textbf{Activités :} Liste des expériences spécifiques (Trekking, surf, bivouac).
+    \item \textbf{Infos pratiques :} Saisonnalité et conseils voyageurs.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\caption{Comparatif technique des destinations}
+\label{tab:comparaison_destinations}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Page} & \textbf{Thématique} & \textbf{Activités Clés} \\
+\hline
+\texttt{hautAtalas.html} & Montagne, Culture Berbère & Trekking, Randonnée \\
+\hline
+\texttt{littoral.html} & Côte, Biodiversité marine & Observation, Sports nautiques \\
+\hline
+\texttt{oasis\&dunes.html} & Désert, Culture Nomade & Bivouac, Chameau \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Page Activités (Activite.html)}
+Cette page catalogue l'ensemble des offres sans distinction géographique, classées par typologie :
+\begin{itemize}
+    \item \textbf{Nature :} Randonnées, observation faune/flore.
+    \item \textbf{Culture :} Rencontres locales, artisanat.
+    \item \textbf{Aventure :} VTT, sports nautiques.
+    \item \textbf{Écologie :} Reforestation, actions solidaires.
+\end{itemize}
+\textit{Design :} Utilisation de cartes avec visuels attractifs pour inciter à la découverte.
+
+\subsection{Section Blog et Conseils (consielsBlog.html)}
+Espace éditorial visant à améliorer le référencement (SEO) et à éduquer le visiteur.
+\begin{itemize}
+    \item \textbf{Page Index :} Liste les articles avec résumés et liens "Lire la suite".
+    \item \textbf{Articles détaillés :} 
+    \begin{itemize}
+        \item \texttt{article-responsable.html} : Charte du voyageur éthique.
+        \item \texttt{article-ecolodges.html} : Guide des hébergements durables.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Page À Propos (apropos.html)}
+Page institutionnelle définissant l'identité du projet autour de la devise : \textbf{"Explorer • Respecter • Préserver"}. Elle explicite la mission de soutien aux communautés locales et l'engagement environnemental de l'équipe.
+
+\subsection{Page Contact (contact.html)}
+Interface de communication bidirectionnelle comprenant :
+\begin{itemize}
+    \item \textbf{Formulaire interactif :} Champs (Nom, Email, Sujet, Message) avec validation JavaScript côté client.
+    \item \textbf{Coordonnées :} Affichage direct des informations (email, réseaux sociaux).
+    \item \textbf{Conformité :} Case à cocher pour le consentement RGPD.
+\end{itemize}
+
+\subsection{Page Soutenir les Projets (soutenirLesProjets.html)}
+Page dédiée à l'engagement communautaire (Crowdfunding/Bénévolat). Elle présente les initiatives locales (ex: reforestation) et offre des mécanismes de transparence sur l'utilisation des fonds collectés.
+
+\vspace{0.5cm}
+
+\begin{table}[h]
+\centering
+\caption{Arborescence technique du site}
+\label{tab:recapitulatif_pages}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{|l|l|X|}
+\hline
+\textbf{Page} & \textbf{Fichier HTML} & \textbf{Fonctionnalité Principale} \\
+\hline
+Accueil & \texttt{index.html} & Landing page, Navigation, CTA \\
+\hline
+Destinations & \texttt{destinations.html} & Hub vers les 3 régions \\
+\hline
+Détails & \texttt{*.html} (3 fichiers) & Infos spécifiques par région \\
+\hline
+Activités & \texttt{Activite.html} & Catalogue d'expériences \\
+\hline
+Blog & \texttt{consielsBlog.html} & Articles de fond et conseils \\
+\hline
+Contact & \texttt{contact.html} & Formulaire avec validation JS \\
+\hline
+À propos & \texttt{apropos.html} & Mission et valeurs \\
+\hline
+Soutien & \texttt{soutenirLesProjets.html} & Appel aux dons et bénévolat \\
+\hline
+\end{tabularx}
+\end{table}
+
+\section{Réutilisation des composants}
+
+Les éléments communs tels que l'en-tête, le menu de navigation et le pied de page sont réutilisés sur l'ensemble des pages afin de garantir une cohérence visuelle et fonctionnelle à travers tout le site ÉcoTourisme Maroc.
+
+\subsection{Composants globaux communs}
+
+\subsubsection{En-tête et navigation}
+
+L'en-tête du site est identique sur toutes les pages et comprend :
+
+\begin{itemize}
+    \item \textbf{Logo et titre} : "ÉcoTourisme Maroc" cliquable (retour à l'accueil)
+    \item \textbf{Slogan} : "Explorer • Respecter • Préserver"
+    \item \textbf{Menu de navigation} : 6 liens principaux (Accueil, Destinations, Activités, Blog, À propos, Contact)
+    \item \textbf{Menu responsive} : Version mobile avec menu hamburger pour les petits écrans
+\end{itemize}
+
+Cette navigation cohérente permet aux visiteurs de se repérer facilement et d'accéder rapidement à n'importe quelle section du site depuis n'importe quelle page.
+
+\begin{figure}[h!] 
+  \includegraphics[width=0.5\textwidth]{mobile.png}
+  \includegraphics[width=0.5\textwidth]{desktop.png}
+  \caption{ Navigation desktop et mobile}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsubsection{Pied de page}
+
+Le pied de page, également présent sur toutes les pages, contient :
+
+\begin{itemize}
+    \item \textbf{Copyright} : "© 2025 ÉcoTourisme Maroc — Tous droits réservés."
+    \item \textbf{Lien rapide} : Accès direct à la page Contact
+    \item \textbf{Design minimaliste} : Information essentielle sans surcharge
+\end{itemize}
+
+\subsection{Avantages de la réutilisation}
+
+Cette approche de réutilisation des composants présente plusieurs bénéfices majeurs :
+
+\begin{itemize}
+    \item \textbf{Cohérence visuelle} : Les utilisateurs retrouvent les mêmes éléments sur chaque page, facilitant la navigation et renforçant l'identité du site
+    \item \textbf{Maintenance simplifiée} : Une modification de l'en-tête ou du pied de page se répercute automatiquement sur toutes les pages en modifiant uniquement le fichier CSS correspondant (navFooterSty.css)
+    \item \textbf{Développement accéléré} : La création de nouvelles pages est plus rapide grâce à la réutilisation de la structure HTML commune
+    \item \textbf{Expérience utilisateur améliorée} : Navigation intuitive et prévisible sur l'ensemble du site
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Composants réutilisés sur les pages du site}
+\label{tab:composants_reutilises}
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Composant} & \textbf{Présent sur toutes les pages} \\
+\hline
+En-tête (Header) & \checkmark \\
+\hline
+Navigation principale & \checkmark \\
+\hline
+Pied de page (Footer) & \checkmark \\
+\hline
+Slogan "Explorer • Respecter • Préserver" & \checkmark \\
+\hline
+Liens de navigation (6 pages) & \checkmark \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Tests et validation}
+
+Les pages développées ont été testées sur différents navigateurs et sur plusieurs tailles d'écran afin de garantir un affichage correct, une navigation fluide et une expérience utilisateur optimale sur tous les supports.
+
+\subsection{Tests de compatibilité navigateurs}
+
+Le site a été testé sur les navigateurs les plus utilisés pour assurer un rendu et un comportement identiques :
+
+\begin{itemize}
+    \item \textbf{Google Chrome} (version 120+) : Navigateur majoritaire
+    \item \textbf{Mozilla Firefox} (version 121+) : Alternative open-source
+    \item \textbf{Safari} (macOS/iOS) : Navigateur Apple
+    \item \textbf{Microsoft Edge} : Navigateur Windows par défaut
+\end{itemize}
+
+Les points vérifiés incluent l'affichage correct des styles CSS, le fonctionnement du carrousel d'images, la validation des formulaires et la navigation responsive.
+
+\subsection{Tests responsive}
+
+Le site a été testé sur différentes tailles d'écran pour valider son adaptation automatique :
+
+\textbf{Breakpoints testés :}
+\begin{itemize}
+    \item \textbf{Mobile} : 320px - 480px (smartphones)
+    \item \textbf{Tablette} : 768px - 1024px (iPad, tablettes Android)
+    \item \textbf{Desktop} : 1024px et plus (ordinateurs portables et fixes)
+\end{itemize}
+
+\textbf{Outils utilisés :}
+\begin{itemize}
+    \item Chrome DevTools (Device Mode)
+    \item Tests sur appareils physiques (smartphone, tablette, ordinateur)
+    \item Vérification du menu hamburger sur mobile
+    \item Adaptation du carrousel d'images sur tous les formats
+\end{itemize}
+
+\subsection{Validation du code}
+
+\subsubsection{Validation HTML5}
+
+Le code HTML de toutes les pages a été validé avec le validateur W3C (https://validator.w3.org/) :
+\begin{itemize}
+    \item Vérification de la conformité HTML5
+    \item Correction des erreurs de syntaxe
+    \item Respect de la hiérarchie des balises sémantiques
+\end{itemize}
+
+\subsubsection{Validation CSS3}
+
+Les feuilles de style ont été validées pour garantir leur conformité :
+\begin{itemize}
+    \item Validation via W3C CSS Validator
+    \item Vérification de la compatibilité des propriétés CSS3
+    \item Absence d'erreurs de syntaxe
+\end{itemize}
+\begin{figure}[h!] 
+  \centering
+  \includegraphics[width=\textwidth]{checking.png}
+  \caption{Résultat de validation W3C}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+\subsection{Tests fonctionnels}
+
+\subsubsection{Navigation}
+\begin{itemize}
+    \item Vérification de tous les liens internes (navigation entre pages)
+    \item Test du bouton "Découvrir nos destinations" sur la page d'accueil
+    \item Fonctionnement correct des liens dans les cartes de destinations
+    \item Navigation au clavier (accessibilité)
+\end{itemize}
+
+\subsubsection{Formulaire de contact}
+\begin{itemize}
+    \item Test de la validation des champs obligatoires
+    \item Vérification du format email
+    \item Affichage des messages d'erreur
+    \item Test de soumission du formulaire
+\end{itemize}
+
+\subsubsection{Éléments interactifs}
+\begin{itemize}
+    \item Fonctionnement du carrousel d'images sur la page d'accueil
+    \item Transitions automatiques entre les images
+    \item Effets de survol sur les boutons et liens
+    \item Menu hamburger sur mobile
+\end{itemize}
+
+\subsection{Tests de performance}
+
+Des tests de performance ont été effectués pour garantir des temps de chargement rapides :
+
+\begin{itemize}
+    \item \textbf{Optimisation des images} : Compression et redimensionnement des photos
+    \item \textbf{Temps de chargement} : Vérification que les pages se chargent en moins de 3 secondes
+    \item \textbf{Nombre de requêtes} : Minimisation du nombre de fichiers externes
+\end{itemize}
+
+\subsection{Résultats des tests}
+
+\begin{table}[h]
+\centering
+\caption{Récapitulatif des tests effectués}
+\label{tab:resultats_tests}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Type de test} & \textbf{Outils/Méthode} & \textbf{Résultat} \\
+\hline
+Compatibilité navigateurs & Chrome, Firefox, Safari, Edge & \checkmark Validé \\
+\hline
+Responsive design & DevTools, appareils physiques &\checkmark Validé \\
+\hline
+Validation HTML5 & W3C Validator & \checkmark Conforme \\
+\hline
+Validation CSS3 & W3C CSS Validator & \checkmark Conforme \\
+\hline
+Navigation et liens & Tests manuels & \checkmark Fonctionnel \\
+\hline
+Formulaire contact & Tests manuels & \checkmark Fonctionnel \\
+\hline
+Performance & Temps de chargement & \checkmark < 3 secondes \\
+\hline
+\end{tabular}
+\end{table}
+
+Tous les tests effectués confirment le bon fonctionnement du site sur l'ensemble des navigateurs et appareils testés, garantissant ainsi une expérience utilisateur optimale pour tous les visiteurs du site ÉcoTourisme Maroc.
+
+\section{Conclusion du chapitre}
+
+Le développement des pages HTML du site ÉcoTourisme Maroc a suivi une méthodologie rigoureuse et structurée, garantissant la qualité, l'accessibilité et la performance du produit final. L'utilisation de technologies web standards (HTML5, CSS3, JavaScript) sans dépendance à des frameworks lourds assure la pérennité et la maintenabilité du site.
+
+L'organisation modulaire des fichiers, la réutilisation systématique des composants, et le respect des standards W3C et WCAG 2.1 constituent les piliers d'un site professionnel et accessible à tous. Les tests exhaustifs effectués sur multiples navigateurs et appareils confirment la robustesse de l'architecture mise en place.
+
+Le chapitre suivant détaillera la mise en forme CSS et les techniques de responsive design appliquées pour créer une expérience visuelle attractive et adaptative sur tous les supports.
+\chapter{Mise en forme et design avec CSS}
+
+La mise en forme du site ÉcoTourisme Maroc a été réalisée entièrement en CSS3, en adoptant une approche modulaire et responsive. L'objectif est de créer une identité visuelle cohérente qui reflète les valeurs écologiques du projet tout en garantissant une expérience utilisateur agréable sur tous les supports (ordinateurs, tablettes, smartphones).
+
+\section{Architecture CSS du projet}
+
+\subsection{Organisation des feuilles de style}
+
+Les styles CSS sont organisés de manière modulaire dans le dossier \texttt{css/}, permettant une maintenance facilitée et une réutilisation optimale du code.
+
+\subsubsection{Structure des fichiers CSS}
+
+\begin{verbatim}
+css/
+ ├── base.css              # Styles de base et reset CSS
+ ├── navFooterSty.css      # Navigation et pied de page
+ ├── AccueilStyle.css      # Styles page d'accueil
+ ├── DestinationSty.css    # Styles pages destinations
+ ├── ActiviteStyle.css     # Styles page activités
+ ├── AproposStyle.css      # Styles page à propos
+ └── BlogStyle.css         # Styles blog et articles
+\end{verbatim}
+
+\textbf{Rôle de chaque fichier :}
+\begin{itemize}
+    \item \textbf{base.css} : Contient le reset CSS, les variables globales, la typographie de base et les classes utilitaires réutilisables
+    \item \textbf{navFooterSty.css} : Gère l'apparence de l'en-tête, du menu de navigation et du pied de page (composants communs à toutes les pages)
+    \item \textbf{Fichiers spécifiques} : Chaque page principale possède son propre fichier CSS pour les styles spécifiques, évitant ainsi la surcharge et permettant un chargement optimisé
+\end{itemize}
+
+\subsection{Approche de développement CSS}
+\subsubsection{Principes de design appliqués}
+
+\begin{itemize}
+    \item \textbf{Simplicité} : Interface épurée mettant en avant le contenu visuel (paysages du Maroc)
+    \item \textbf{Cohérence} : Uniformité des couleurs, typographies et espacements sur toutes les pages
+    \item \textbf{Accessibilité} : Contrastes suffisants, tailles de texte lisibles, zones cliquables suffisamment grandes
+    \item \textbf{Performance} : CSS optimisé, animations légères, absence de frameworks lourds
+\end{itemize}
+\section{Identité visuelle et charte graphique}
+
+\subsection{Palette de couleurs}
+
+La palette de couleurs a été choisie pour évoquer la nature et l'écologie, tout en assurant une bonne lisibilité et un contraste suffisant.
+
+\textbf{Couleurs principales :}
+\begin{itemize}
+    \item \textbf{Vert naturel} : Couleur dominante évoquant l'écologie et la nature (utilisée pour les boutons CTA, liens actifs)
+    \item \textbf{Blanc/Beige clair} : Arrière-plans pour la clarté et la lisibilité
+    \item \textbf{Gris foncé/Noir} : Textes principaux pour un bon contraste
+    \item \textbf{Tons terreux} : Marron, ocre pour rappeler les paysages marocains (désert, montagnes)
+\end{itemize}
+subsection{Typographie}
+
+\textbf{Polices utilisées :}
+\begin{itemize}
+    \item \textbf{Titres} : Police sans-serif moderne et lisible (ex: Roboto, Open Sans, Montserrat)
+    \item \textbf{Corps de texte} : Police sans-serif pour la clarté sur écran
+    \item \textbf{Tailles} : 
+    \begin{itemize}
+        \item Titres h1 : 2.5rem (40px)
+        \item Titres h2 : 2rem (32px)
+        \item Titres h3 : 1.5rem (24px)
+        \item Texte normal : 1rem (16px)
+    \end{itemize}
+\end{itemize}
+
+\textbf{Hiérarchie typographique :}
+Une hiérarchie claire est maintenue à travers le site pour faciliter la lecture et la compréhension de l'information.
+
+\subsection{Espacements et grilles}
+
+\begin{itemize}
+    \item \textbf{Système d'espacement} : Basé sur des multiples de 8px (8px, 16px, 24px, 32px, 48px) pour une cohérence visuelle
+    \item \textbf{Largeur maximale du contenu} : 1200px pour éviter des lignes de texte trop longues sur grands écrans
+    \item \textbf{Marges et paddings} : Cohérents sur toutes les pages grâce aux variables CSS
+\end{itemize}
+
+\section{Styles des composants principaux}
+
+\subsection{En-tête et navigation}
+
+\subsubsection{Design de l'en-tête}
+
+L'en-tête du site présente les caractéristiques suivantes :
+\begin{itemize}
+    \item \textbf{Position} : Fixe en haut de page (sticky header) pour un accès permanent à la navigation
+    \item \textbf{Arrière-plan} : Blanc ou semi-transparent avec effet de flou lors du scroll
+    \item \textbf{Logo} : Affiché à gauche avec le titre "ÉcoTourisme Maroc"
+    \item \textbf{Slogan} : "Explorer • Respecter • Préserver" visible sous le logo ou dans le header
+\end{itemize}
+
+\subsubsection{Menu de navigation}
+
+\textbf{Version desktop :}
+\begin{itemize}
+    \item Liste horizontale de liens alignés à droite
+    \item Espacement uniforme entre les liens
+    \item Effet de survol : changement de couleur, soulignement ou animation subtile
+    \item Indication de la page active via un style différent (couleur, soulignement)
+\end{itemize}
+
+\textbf{Version mobile :}
+\begin{itemize}
+    \item Menu hamburger (icône trois barres) à droite
+    \item Menu déroulant ou latéral au clic
+    \item Animation d'ouverture/fermeture fluide
+    \item Liens empilés verticalement pour faciliter le clic
+\end{itemize}
+
+subsection{Carrousel d'images (Page d'accueil)}
+
+Le carrousel de la page d'accueil présente les caractéristiques suivantes :
+
+\begin{itemize}
+    \item \textbf{Taille} : Pleine largeur de l'écran, hauteur adaptative (70-100vh)
+    \item \textbf{Transition} : Fondu enchaîné (fade) entre les 3 images (nature1.jpg, nature7.jpg, nature6.jpg)
+    \item \textbf{Durée} : Changement automatique toutes les 5 secondes
+    \item \textbf{Contrôles} : Éventuellement des points de navigation ou flèches pour navigation manuelle
+    \item \textbf{Responsive} : Images adaptées automatiquement selon la taille d'écran (object-fit: cover)
+\end{itemize}
+
+\textbf{Styles CSS appliqués :}
+\begin{itemize}
+    \item Position relative pour contenir les images absolues
+    \item Animations CSS (fadeIn/fadeOut) ou JavaScript pour les transitions
+    \item Optimisation des images pour performance (lazy loading)
+\end{itemize}
+
+\begin{figure}[h!] 
+  \includegraphics[width=\textwidth]{transition.png}
+  \caption{  Carrousel d'images avec transitions}
+  
+  \label{fig:structure_main}
+\end{figure}
+
+
+\subsection{Boutons et appels à l'action}
+
+Les boutons CTA (Call To Action) sont stylisés de manière cohérente :
+
+\textbf{Bouton principal :}
+\begin{itemize}
+    \item Couleur de fond verte (rappel écologie)
+    \item Texte blanc en gras
+    \item Bordures arrondies (border-radius: 5-10px)
+    \item Padding généreux pour faciliter le clic
+    \item Effet de survol : assombrissement de la couleur, légère élévation (box-shadow)
+    \item Transition douce sur toutes les propriétés
+\end{itemize}
+
+\textbf{Exemple de bouton :} "Découvrir nos destinations" sur la page d'accueil
+
+\subsection{Cartes de destinations}
+
+Les cartes présentant les destinations suivent un design uniforme :
+
+\begin{itemize}
+    \item \textbf{Structure} : Image en haut, texte en bas
+    \item \textbf{Bordures} : Ombrage léger (box-shadow) pour effet de profondeur
+    \item \textbf{Espacement} : Marges cohérentes entre les cartes
+    \item \textbf{Effet de survol} : Élévation de la carte (augmentation du box-shadow), zoom léger de l'image
+    \item \textbf{Image} : Ratio 16:9 ou 4:3, couvrant toute la largeur de la carte
+    \item \textbf{Texte} : Titre, description courte, lien "En savoir plus"
+\end{itemize}
+
+\subsection{Pied de page}
+
+Le footer présente un design minimaliste :
+
+\begin{itemize}
+    \item Arrière-plan gris clair ou vert foncé
+    \item Texte centré avec copyright
+    \item Lien vers la page Contact
+    \item Padding suffisant pour aérer le contenu
+    \item Séparation visuelle claire avec le contenu principal (ligne ou espacement)
+\end{itemize}
+
+\section{Responsive Design}
+\subsection{Techniques CSS utilisées}
+
+\subsubsection{Flexbox}
+
+Utilisé pour :
+\begin{itemize}
+    \item Alignement du header (logo à gauche, navigation à droite)
+    \item Organisation du footer
+    \item Centrage vertical et horizontal des éléments
+\end{itemize}
+
+\subsubsection{CSS Grid}
+
+Utilisé pour :
+\begin{itemize}
+    \item Grille de cartes de destinations (3 colonnes desktop, 2 tablette, 1 mobile)
+    \item Layout général de certaines pages
+    \item Organisation des sections avec plusieurs colonnes
+\end{itemize}
+
+\subsubsection{Media Queries}
+
+Permettent l'adaptation automatique du design selon la taille d'écran en modifiant :
+\begin{itemize}
+    \item Le nombre de colonnes dans les grilles
+    \item Les tailles de police
+    \item Les espacements et marges
+    \item L'affichage ou masquage de certains éléments
+    \item La disposition des éléments (flex-direction: column sur mobile)
+\end{itemize}
+
+\section{Animations et transitions}
+
+\subsection{Animations CSS}
+
+Des animations subtiles améliorent l'expérience utilisateur sans alourdir le site :
+
+\textbf{Carrousel d'images :}
+\begin{itemize}
+    \item Transition en fondu (fade) entre les images
+    \item Durée : 1 seconde
+    \item Fonction d'accélération : ease-in-out
+\end{itemize}
+
+\textbf{Effets de survol :}
+\begin{itemize}
+    \item Liens : Changement de couleur progressif (transition: 0.3s)
+    \item Boutons : Changement de couleur + élévation (box-shadow)
+    \item Cartes : Élévation et zoom léger de l'image (transform: scale(1.05))
+\end{itemize}
+
+\textbf{Menu mobile :}
+\begin{itemize}
+    \item Animation d'ouverture/fermeture du menu hamburger
+    \item Transformation de l'icône hamburger en X
+    \item Transition fluide des liens (slide-in)
+\end{itemize}
+
+\subsection{Optimisation des performances}
+
+Les animations sont optimisées pour la performance :
+\begin{itemize}
+    \item Utilisation de \texttt{transform} et \texttt{opacity} plutôt que de propriétés déclenchant des reflows
+    \item Durées courtes (0.3s à 0.5s) pour éviter la lenteur
+    \item Fonction \texttt{will-change} pour les animations fréquentes
+    \item Désactivation des animations sur les appareils à faible performance (prefers-reduced-motion)
+\end{itemize}
+
+
+\section{Optimisation et bonnes pratiques}
+
+\subsection{Performance CSS}
+
+\subsubsection{Minification}
+
+En production, les fichiers CSS sont :
+\begin{itemize}
+    \item Minifiés pour réduire la taille (suppression des espaces, commentaires)
+    \item Potentiellement concaténés en un seul fichier pour réduire les requêtes HTTP
+\end{itemize}
+
+\subsubsection{Chargement optimisé}
+
+\begin{itemize}
+    \item \textbf{base.css et navFooterSty.css} : Chargés sur toutes les pages (styles communs)
+    \item \textbf{Styles spécifiques} : Chargés uniquement sur les pages concernées (ex: AccueilStyle.css uniquement sur index.html)
+    \item \textbf{Fonts} : Chargement optimisé des polices Google Fonts (font-display: swap)
+\end{itemize}
+
+\subsection{Compatibilité navigateurs}
+
+\subsubsection{Préfixes vendeurs}
+
+Utilisation de préfixes pour assurer la compatibilité avec les navigateurs plus anciens :
+\begin{verbatim}
+.element {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+\end{verbatim}
+
+\subsubsection{Fallbacks}
+
+Des solutions de repli sont prévues pour les fonctionnalités CSS3 avancées non supportées par certains navigateurs.
+
+\subsection{Accessibilité}
+
+\textbf{Contrastes :}
+\begin{itemize}
+    \item Ratio minimum de 4.5:1 entre texte et arrière-plan (WCAG AA)
+    \item Texte blanc sur fond vert vérifié pour le contraste
+\end{itemize}
+
+\textbf{Focus visible :}
+\begin{itemize}
+    \item Outline visible lors de la navigation au clavier
+    \item Style de focus personnalisé pour les boutons et liens
+\end{itemize}
+
+\textbf{Tailles de clic :}
+\begin{itemize}
+    \item Boutons et liens d'au moins 44x44 pixels sur mobile (recommandation WCAG)
+    \item Espacement suffisant entre les éléments cliquables
+\end{itemize}
+
+\section{Variables CSS et maintenabilité}
+
+\subsection{Utilisation des custom properties}
+
+Les variables CSS sont définies dans \texttt{base.css} pour faciliter les modifications globales :
+
+\begin{verbatim}
+:root {
+    --bg: #f7fbff;
+    --primary: #1a2e37; 
+    --accent: #1ab95a;  
+    --muted: #7a8791;
+    --card: #ffffff;
+    --glass: rgba(255,255,255,0.7);
+    --radius: 12px;
+  --max-width: 1200px;
+  --footer-height: 72px; 
+}
+\end{verbatim}
+
+\subsection{Avantages des variables}
+
+\begin{itemize}
+    \item \textbf{Cohérence} : Les mêmes valeurs utilisées partout
+    \item \textbf{Maintenance} : Modification globale en changeant une seule valeur
+    \item \textbf{Thématisation} : Possibilité de créer des thèmes alternatifs facilement
+    \item \textbf{Lisibilité} : Code CSS plus compréhensible avec des noms de variables explicites
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\caption{Récapitulatif des techniques CSS utilisées}
+\label{tab:techniques_css}
+\begin{tabular}{|l|p{10cm}|}
+\hline
+\textbf{Technique} & \textbf{Utilisation dans le projet} \\
+\hline
+Flexbox & Alignement header/footer, centrage d'éléments \\
+\hline
+CSS Grid & Grille de cartes destinations, layouts multi-colonnes \\
+\hline
+Media Queries & Responsive design (mobile, tablette, desktop) \\
+\hline
+Animations & Carrousel, effets de survol, menu mobile \\
+\hline
+Variables CSS & Couleurs, espacements, typographies \\
+\hline
+Transitions & Effets de survol fluides (0.3s ease) \\
+\hline
+Box-shadow & Profondeur des cartes, élévation au survol \\
+\hline
+Transform & Zoom images, animations légères \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Conclusion du chapitre}
+
+La mise en forme CSS du site ÉcoTourisme Maroc a été réalisée avec une attention particulière portée à la cohérence visuelle, la performance et l'accessibilité. L'approche modulaire adoptée facilite la maintenance et l'évolution future du site, tandis que le responsive design garantit une expérience optimale sur tous les appareils.
+
+L'identité visuelle, basée sur des couleurs naturelles et une typographie claire, reflète les valeurs écologiques du projet. Les animations subtiles et les interactions fluides améliorent l'engagement des utilisateurs sans compromettre les performances.
+
+Le chapitre suivant abordera l'ajout d'interactivité avec JavaScript pour enrichir l'expérience utilisateur.
+
 \end{document}
